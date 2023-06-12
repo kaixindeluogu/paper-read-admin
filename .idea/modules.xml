@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/back-stage-management/back-stage-management.iml" filepath="$PROJECT_DIR$/back-stage-management/back-stage-management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/paper-read-admin.iml" filepath="$PROJECT_DIR$/.idea/paper-read-admin.iml" />
+    </modules>
+  </component>
+</project>
