@@ -1,8 +1,9 @@
 package cn.tedu.back.stage.management.core.ex.handler;
 
-import cn.tedu.tea.admin.server.common.ex.ServiceException;
-import cn.tedu.tea.admin.server.common.web.JsonResult;
-import cn.tedu.tea.admin.server.common.web.ServiceCode;
+
+import cn.tedu.back.stage.management.common.ex.ServiceException;
+import cn.tedu.back.stage.management.common.web.JsonResult;
+import cn.tedu.back.stage.management.common.web.ServiceCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
