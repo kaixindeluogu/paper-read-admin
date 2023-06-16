@@ -1,4 +1,4 @@
-package cn.tedu.back.stage.management.superadmin.pojo.param;
+package cn.tedu.back.stage.management.superadmin.banner.pojo.param;
 
 import lombok.Data;
 

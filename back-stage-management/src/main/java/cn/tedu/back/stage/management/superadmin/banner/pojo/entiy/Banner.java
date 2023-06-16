@@ -1,4 +1,4 @@
-package cn.tedu.back.stage.management.superadmin.pojo.entiy;
+package cn.tedu.back.stage.management.superadmin.banner.pojo.entiy;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;

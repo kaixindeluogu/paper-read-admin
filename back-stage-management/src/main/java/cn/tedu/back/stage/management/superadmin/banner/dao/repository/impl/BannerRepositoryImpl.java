@@ -1,8 +1,8 @@
-package cn.tedu.back.stage.management.superadmin.dao.repository.impl;
+package cn.tedu.back.stage.management.superadmin.banner.dao.repository.impl;
 
-import cn.tedu.back.stage.management.superadmin.dao.mapper.BannerMapper;
-import cn.tedu.back.stage.management.superadmin.dao.repository.IBannerRepository;
-import cn.tedu.back.stage.management.superadmin.pojo.param.BannerParam;
+import cn.tedu.back.stage.management.superadmin.banner.dao.mapper.BannerMapper;
+import cn.tedu.back.stage.management.superadmin.banner.dao.repository.IBannerRepository;
+import cn.tedu.back.stage.management.superadmin.banner.pojo.param.BannerParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
