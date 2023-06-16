@@ -1,6 +1,6 @@
 package cn.tedu.back.stage.management.superadmin.banner.dao.mapper;
 
-import cn.tedu.back.stage.management.superadmin.banner.pojo.entiy.Banner;
+import cn.tedu.back.stage.management.superadmin.banner.pojo.entity.Banner;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
