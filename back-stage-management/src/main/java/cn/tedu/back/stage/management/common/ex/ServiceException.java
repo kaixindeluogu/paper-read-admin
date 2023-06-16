@@ -1,7 +1,9 @@
 package cn.tedu.back.stage.management.common.ex;
 
-import cn.tedu.tea.admin.server.common.web.ServiceCode;
+
+import cn.tedu.back.stage.management.common.web.ServiceCode;
 import lombok.Getter;
+
 
 /**
  * 业务异常
@@ -9,6 +11,7 @@ import lombok.Getter;
  * @author java@tedu.cn
  * @version 1.0
  */
+
 public class ServiceException extends RuntimeException {
 
     @Getter

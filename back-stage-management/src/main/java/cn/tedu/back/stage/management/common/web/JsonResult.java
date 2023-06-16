@@ -1,6 +1,7 @@
 package cn.tedu.back.stage.management.common.web;
 
-import cn.tedu.tea.admin.server.common.ex.ServiceException;
+
+import cn.tedu.back.stage.management.common.ex.ServiceException;
 import com.fasterxml.jackson.annotation.JacksonInject;
 import lombok.Data;
 

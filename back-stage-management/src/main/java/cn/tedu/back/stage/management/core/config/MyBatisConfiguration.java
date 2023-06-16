@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
-@MapperScan({"cn.tedu.back.stage.management.superadmin.dao.mapper"})
+@MapperScan({"cn.tedu.back.stage.management.superadmin.banner.dao.mapper"})
 public class MyBatisConfiguration {
 
     public MyBatisConfiguration() {

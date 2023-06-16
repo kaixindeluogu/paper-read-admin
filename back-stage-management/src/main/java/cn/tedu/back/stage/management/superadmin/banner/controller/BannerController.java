@@ -5,7 +5,9 @@ import cn.tedu.back.stage.management.superadmin.banner.pojo.param.BannerParam;
 import cn.tedu.back.stage.management.superadmin.banner.service.IBannerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,9 +27,10 @@ public class BannerController {
     }
 
     @PostMapping("upload")
-    public JsonResult upload(BannerParam bannerParam) {
-        log.debug("");
-        return null;
+    public JsonResult upload(@RequestBody  BannerParam bannerParam) {
+        log.debug("开始处理新增轮播表业务请求:{}",bannerParam);
+        bannerService.insert(bannerParam);
+        return JsonResult.ok();
     }
 
 
