@@ -29,8 +29,15 @@ public class JsonResult {
     private Object data;
 
     public static JsonResult ok() {
+//        JsonResult jsonResult = new JsonResult();
+//        jsonResult.setState(ServiceCode.OK.getValue());
+//        return jsonResult;
+        return ok(null);
+    }
+    public static JsonResult ok(Object data) {
         JsonResult jsonResult = new JsonResult();
         jsonResult.setState(ServiceCode.OK.getValue());
+        jsonResult.setData(data);
         return jsonResult;
     }
 

@@ -9,4 +9,6 @@ import cn.tedu.back.stage.management.superadmin.banner.pojo.param.BannerParam;
  */
 public interface IBannerService {
     void insert(BannerParam bannerParam);
+
+    int deleteById(Long id);
 }

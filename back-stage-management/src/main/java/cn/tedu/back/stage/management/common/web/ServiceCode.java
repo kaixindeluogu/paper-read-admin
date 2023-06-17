@@ -25,6 +25,15 @@ public enum ServiceCode {
      */
     ERROR_CONFLICT(40900),
     /**
+     *
+     * 删除失败
+     * */
+    DELETE_ERROR(49999),
+/**
+ * IO异常
+ * */
+    IO_ERROR(50000),
+    /**
      * 错误：其它异常
      */
     ERROR_UNKNOWN(99999);

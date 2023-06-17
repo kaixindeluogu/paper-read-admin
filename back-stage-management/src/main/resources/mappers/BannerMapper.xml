@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.back.stage.management.superadmin.banner.dao.mapper.BannerMapper">
+    <select id="listBannerAll" resultMap="listALL">
+        SELECT title,img_url,sort,gmt_create,id
+        FROM zhipian_banner
+    </select>
+
+    <resultMap id="listALL" type="cn.tedu.back.stage.management.superadmin.banner.pojo.vo.BannerVO">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="img_url" property="imgUrl"/>
+        <result column="sort" property="sort"/>
+        <result column="gmt_create" property="gmtCreate"/>
+    </resultMap>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

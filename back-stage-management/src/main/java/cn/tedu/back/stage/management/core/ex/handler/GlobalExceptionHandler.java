@@ -9,6 +9,8 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.io.IOException;
+
 /**
  * 全局异常处理器
  *
@@ -27,6 +29,14 @@ public class GlobalExceptionHandler {
     public JsonResult handleServiceException(ServiceException e) {
         log.debug("全局异常处理器开始处理ServiceException");
         return JsonResult.fail(e);
+    }
+
+    @ExceptionHandler
+    public JsonResult handlerServiceIOException(IOException e) {
+        log.debug("全局异常处理器开始处理IOException");
+        String message = "文件上传异常,请检查网络连接";
+        log.warn(message);
+        return JsonResult.fail(ServiceCode.IO_ERROR,message);
     }
 
     @ExceptionHandler
