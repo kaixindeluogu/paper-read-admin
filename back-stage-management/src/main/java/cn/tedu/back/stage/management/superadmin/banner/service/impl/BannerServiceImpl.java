@@ -7,14 +7,15 @@ import cn.tedu.back.stage.management.superadmin.banner.service.IBannerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 /**
  * Author = bianmy
  * DATE = 2023/6/16 19:19
  */
-@Repository
+
 @Slf4j
+@Service
 public class BannerServiceImpl implements IBannerService {
     @Autowired
     private IBannerRepository iBannerRepository;

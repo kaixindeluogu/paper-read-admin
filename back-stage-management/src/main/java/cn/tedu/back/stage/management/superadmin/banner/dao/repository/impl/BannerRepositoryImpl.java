@@ -12,8 +12,9 @@ import org.springframework.stereotype.Repository;
  * Author = bianmy
  * DATE = 2023/6/16 17:18
  */
-@Repository
+
 @Slf4j
+@Repository
 public class BannerRepositoryImpl implements IBannerRepository {
 
     @Autowired
