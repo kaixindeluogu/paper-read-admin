@@ -12,9 +12,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
-@MapperScan({"cn.tedu.back.stage.management.superadmin.banner.dao.mapper",
-            "cn.tedu.back.stage.management.superadmin.libraryapply.dao.mapper",
-            "cn.tedu.back.stage.management.superadmin.report.dao.persist.mapper"})
+@MapperScan({
+        "cn.tedu.back.stage.management.superadmin.banner.dao.mapper",
+        "cn.tedu.back.stage.management.superadmin.libraryapply.dao.mapper",
+        "cn.tedu.back.stage.management.superadmin.report.dao.persist.mapper",
+        "cn.tedu.back.stage.management.superadmin.book.persist.mapper",
+        "cn.tedu.back.stage.management.superadmin.dataStatistics.dao.mapper"
+})
 public class MyBatisConfiguration {
 
     public MyBatisConfiguration() {
