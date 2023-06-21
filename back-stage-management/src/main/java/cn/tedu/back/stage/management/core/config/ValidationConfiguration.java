@@ -8,15 +8,12 @@ import org.springframework.context.annotation.Configuration;
 import javax.validation.Validation;
 
 /**
- * Validation配置类
- *
- * @author java@tedu.cn
- * @version 0.0.1
+ * Author = lee
+ * DATE   = 2023/6/15  16:43
  */
 @Slf4j
 @Configuration
 public class ValidationConfiguration {
-
     public ValidationConfiguration() {
         log.debug("创建配置类对象：ValidationConfiguration");
     }
@@ -29,5 +26,4 @@ public class ValidationConfiguration {
                 .buildValidatorFactory() // 构建Validator工厂
                 .getValidator(); // 从Validator工厂中获取Validator对象
     }
-
 }

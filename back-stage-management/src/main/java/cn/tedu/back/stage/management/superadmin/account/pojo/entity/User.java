@@ -4,7 +4,7 @@ package cn.tedu.back.stage.management.superadmin.account.pojo.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
  * DATE   = 2023/6/16  17:52
  */
 @Data
-@Table(name = "zhipian_user", schema = "zhipian_shop")
+@TableName("zhipian_user")
 public class User implements Serializable {
 
     @TableId(type =  IdType.AUTO)
