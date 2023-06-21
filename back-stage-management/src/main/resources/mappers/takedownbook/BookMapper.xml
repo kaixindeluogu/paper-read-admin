@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.back.stage.management.superadmin.book.persist.mapper.BookMapper">
+
+    <!--  BookStandardVO getStandardById(Long id);-->
+    <select id="selectBooksByIdNotZero" resultMap="StandardResultMap">
+        SELECT
+            id,  name, author,  publisher, status, store_amount,  introduction, gmt_create
+        FROM
+            zhipian_shop.zhipian_book
+        WHERE
+            id!=0
+    </select>
+
+    <resultMap id="StandardResultMap"
+               type="cn.tedu.back.stage.management.superadmin.book.pojo.vo.BookStandardVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="author" property="author"/>
+        <result column="publisher" property="publisher"/>
+        <result column="status" property="status"/>
+        <result column="store_amount" property="storeAmount"/>
+        <result column="introduction" property="introduction"/>
+    </resultMap>
+
+
+</mapper>
