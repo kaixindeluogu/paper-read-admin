@@ -29,7 +29,7 @@ public class Knife4jConfiguration {
     /**
      * 【重要】指定Controller包路径
      */
-    private String basePackage = "cn.tedu.tea.admin.server";
+    private String basePackage = "cn.tedu.back.stage.management.superadmin";
     /**
      * 主机名
      */

@@ -1,0 +1,1 @@
+TRUNCATE zhipian_shop.zhipian_report;
