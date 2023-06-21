@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "dao",
+      "type": "java.lang.String",
+      "description": "Description for zhipian_shop.dao."
+    },
+    {
+      "name": "zhipian_shop.dao",
+      "type": "java.lang.String",
+      "description": "Description for zhipian_shop.dao."
+    }
+  ] }
