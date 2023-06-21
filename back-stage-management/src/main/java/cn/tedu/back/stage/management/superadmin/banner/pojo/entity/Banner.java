@@ -27,6 +27,10 @@ public class Banner implements Serializable {
      * */
     private int sort;
     /**
+     * 标题名称
+    * */
+    private String title;
+    /**
      * 开始时间
      * */
     @TableField(fill = FieldFill.INSERT)

@@ -1,5 +1,7 @@
 package cn.tedu.back.stage.management.superadmin.banner.service.impl;
 
+import cn.tedu.back.stage.management.common.web.JsonResult;
+import cn.tedu.back.stage.management.common.web.ServiceCode;
 import cn.tedu.back.stage.management.superadmin.banner.dao.repository.IBannerRepository;
 import cn.tedu.back.stage.management.superadmin.banner.pojo.entity.Banner;
 import cn.tedu.back.stage.management.superadmin.banner.pojo.param.BannerParam;
@@ -30,6 +32,14 @@ public class BannerServiceImpl implements IBannerService {
         Banner banner = new Banner();
         BeanUtils.copyProperties(bannerParam, banner);
         iBannerRepository.insert(banner);
+    }
+
+    @Override
+    public int deleteById(Long id) {
+
+
+
+        return iBannerRepository.deleteById(id);
     }
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.back.stage.management.superadmin.report.dao.persist.mapper.ReportMapper">
+
+    <!-- ReportStandardVO getStandardById(Long id); -->
+    <select id="getStandardById" resultMap="StandardResultMap">
+        SELECT
+            id, report_content,img_url, user_id, book_id, library_id, gmt_create
+        FROM
+            zhipian_shop.zhipian_report
+        WHERE
+            id=#{id}
+    </select>
+
+    <!-- List<ReportListItemVO> reportList(); -->
+    <select id="list" resultMap="ListResultMap">
+        SELECT
+            id, report_content,img_url, user_id, book_id, library_id, gmt_create
+        FROM
+            zhipian_shop.zhipian_report
+        ORDER BY
+            id DESC
+    </select>
+
+
+    <resultMap id="StandardResultMap"
+               type="cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportStandardVO">
+        <id column="id" property="id"/>
+        <result column="report_content" property="reportContent"/>
+        <result column="img_url" property="imgUrl"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+        <result column="library_id" property="libraryId"/>
+        <result column="gmt_create" property="gmtCreate"/>
+    </resultMap>
+
+    <resultMap id="ListResultMap"
+               type="cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportListItemVO">
+        <id column="id" property="id"/>
+        <result column="report_content" property="reportContent"/>
+        <result column="img_url" property="imgUrl"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+        <result column="library_id" property="libraryId"/>
+        <result column="gmt_create" property="gmtCreate"/>
+    </resultMap>
+
+
+</mapper>

@@ -30,4 +30,9 @@ public class BannerRepositoryImpl implements IBannerRepository {
         log.debug("向轮播图表中插入数据:" + banner);
         return bannerMapper.insert(banner);
     }
+
+    @Override
+    public int deleteById(Long id) {
+        return bannerMapper.deleteById(id);
+    }
 }
