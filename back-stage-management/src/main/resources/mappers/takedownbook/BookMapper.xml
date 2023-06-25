@@ -10,10 +10,31 @@
         FROM
             zhipian_shop.zhipian_book
         WHERE
-            id!=0
+            id=#{id}
+    </select>
+
+    <select id="listType" resultMap="ListTypeResultMap">
+        SELECT
+            id,  name, author,  publisher, status, store_amount,  introduction, gmt_create
+        FROM
+            zhipian_shop.zhipian_book
+        ORDER BY
+            id DESC
     </select>
 
     <resultMap id="StandardResultMap"
+               type="cn.tedu.back.stage.management.superadmin.book.pojo.vo.BookStandardVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="author" property="author"/>
+        <result column="publisher" property="publisher"/>
+        <result column="status" property="status"/>
+        <result column="store_amount" property="storeAmount"/>
+        <result column="introduction" property="introduction"/>
+    </resultMap>
+
+
+    <resultMap id="ListTypeResultMap"
                type="cn.tedu.back.stage.management.superadmin.book.pojo.vo.BookStandardVO">
         <id column="id" property="id"/>
         <result column="name" property="name"/>

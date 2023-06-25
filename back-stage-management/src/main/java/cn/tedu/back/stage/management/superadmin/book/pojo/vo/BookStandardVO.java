@@ -1,5 +1,6 @@
 package cn.tedu.back.stage.management.superadmin.book.pojo.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ public class BookStandardVO {
     private String status;
     private String storeAmount;
     private String introduction;
+    @JsonFormat(pattern = "yyy/MM/dd/ HH:mm:ss" , timezone = "GMT+8")
     private LocalDateTime gmtCreate;
 
 
