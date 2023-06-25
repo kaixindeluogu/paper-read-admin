@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.back.stage.management.bookadmin.bookdetails.dao.mapper.LibraryBookMapper">
+    <select id="listLibraryBooks"
+            resultMap="liberalBook">
+        SELECT id, liberal_id, category_id, name, author, publish_time, publisher, cover, store_amount, sort, introduction,gmt_create
+        FROM zhipian_book
+        WHERE liberal_id = #{liberalId}
+        ORDER BY sort DESC,gmt_create
+    </select>
+
+    <resultMap id="liberalBook"
+               type="cn.tedu.back.stage.management.bookadmin.bookdetails.pojo.vo.LibraryBookVO">
+        <id column="id" property="id"/>
+        <result column="liberal_id" property="libraryId"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="name" property="name"/>
+        <result column="author" property="author"/>
+        <result column="publish_time" property="publishTime"/>
+        <result column="pulisher" property="publisher"/>
+        <result column="store_amount" property="storeAmount"/>
+        <result column="sort" property="sort"/>
+        <result column="introduction" property="introduction"/>
+        <result column="cover" property="cover"/>
+
+    </resultMap>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
