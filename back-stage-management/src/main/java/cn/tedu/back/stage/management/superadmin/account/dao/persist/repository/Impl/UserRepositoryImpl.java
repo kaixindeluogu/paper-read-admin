@@ -1,10 +1,10 @@
 package cn.tedu.back.stage.management.superadmin.account.dao.persist.repository.Impl;
 
+import cn.tedu.back.stage.management.common.pojo.vo.PageData;
 import cn.tedu.back.stage.management.common.util.PageInfoToPageDataConverter;
 import cn.tedu.back.stage.management.superadmin.account.dao.persist.mapper.UserMapper;
 import cn.tedu.back.stage.management.superadmin.account.dao.persist.repository.IUserRepository;
 import cn.tedu.back.stage.management.superadmin.account.pojo.entity.User;
-import cn.tedu.back.stage.management.superadmin.account.pojo.vo.PageData;
 import cn.tedu.back.stage.management.superadmin.account.pojo.vo.UserListItemVO;
 import cn.tedu.back.stage.management.superadmin.account.pojo.vo.UserStandardVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
