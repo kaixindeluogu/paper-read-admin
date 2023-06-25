@@ -18,7 +18,7 @@ public class Book implements Serializable {
      * 图书馆ID
     * */
 
-    private Long liberalId;
+    private Long libraryId;
     /**
      * 分类ID
     * */
