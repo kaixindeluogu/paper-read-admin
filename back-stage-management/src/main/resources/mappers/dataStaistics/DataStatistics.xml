@@ -3,15 +3,38 @@
 
 <mapper namespace="cn.tedu.back.stage.management.superadmin.dataStatistics.dao.mapper.DataStatisticsMapper">
 
-    <select id="listTagType" resultMap="multiTableResultMap" >
-        SELECT l.name, l.click_num, l.address, c.user_id, u.user_name
-        FROM zhipian_shop.zhipian_library l
-                 JOIN zhipian_shop.zhipian_comment c ON l.id = c.id
-                 JOIN zhipian_shop.zhipian_user u ON c.user_id = u.id
-        WHERE (c.id  = l.id = u.id)!=0
-    </select>
+
+        <select id="listTypeId" resultMap="multiTableResultMap" >
+            SELECT  id,name, click_num, address, user_id, user_name
+            FROM
+            zhipian_shop.zhipian_datastatistics
+            WHERE id=#{id}
+        </select>
+
+        <select id="listType" resultMap="ListResultMap">
+            SELECT
+                id,name, click_num, address, user_id, user_name
+            FROM
+                zhipian_shop.zhipian_datastatistics
+            ORDER BY
+                id DESC
+        </select>
+
 
     <resultMap id="multiTableResultMap" type="cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.vo.DataStatisticsListItemVO">
+        <id column="id" property="id"/>
+        <result property="name" column="name"/>
+        <result property="click_num" column="clickNum"/>
+        <result property="address" column="address"/>
+        <result property="user_id" column="userId"/>
+        <result property="user_name" column="userName"/>
+    </resultMap>
+
+
+
+    <resultMap id="ListResultMap"
+               type="cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.vo.DataStatisticsListItemVO">
+        <id column="id" property="id"/>
         <result property="name" column="name"/>
         <result property="click_num" column="clickNum"/>
         <result property="address" column="address"/>

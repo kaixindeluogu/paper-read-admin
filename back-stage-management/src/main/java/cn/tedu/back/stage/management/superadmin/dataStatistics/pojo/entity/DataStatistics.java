@@ -1,11 +1,18 @@
 package cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName(value = "zhipian_shop")// 你自己写张数据库的表  把你需要的字段加进去
+@TableName(value = "zhipian_datastatistics")
 public class DataStatistics {
+    /**
+     * 数据id
+     */
+    @TableId(type = IdType.AUTO)
+    private Long id;
     //zhipian_library需要的字段
     private String name;
     private Long click_num;
