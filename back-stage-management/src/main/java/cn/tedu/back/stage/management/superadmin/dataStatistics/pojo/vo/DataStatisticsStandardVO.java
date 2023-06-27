@@ -7,9 +7,7 @@ import java.io.Serializable;
 @Data
 public class DataStatisticsStandardVO implements Serializable {
 
-
-    public int getTypeId;
-
+    private Long id;
 
     //zhipian_library需要的字段
     /**
