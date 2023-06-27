@@ -57,7 +57,7 @@ public class UserRepositoryImpl implements IUserRepository {
         log.debug("开始执行【根据ID修改标签数据】，参数：{}", user);
         return userMapper.updateById(user);
     }
-    @Override//显示标签列表功能
+    @Override//显示用户列表功能
     public PageData<UserListItemVO> list(Integer pageNum, Integer pageSize) {
         log.debug("开始执行【显示标签列表功能】,页码：{}，每页记录数：{}", pageNum, pageSize);
         PageHelper.startPage(pageNum, pageSize);
