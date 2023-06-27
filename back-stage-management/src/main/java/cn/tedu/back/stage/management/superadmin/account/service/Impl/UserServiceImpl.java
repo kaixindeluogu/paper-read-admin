@@ -27,20 +27,22 @@ public class UserServiceImpl implements IUserService {
     private Integer defaultQueryPageSize;
     @Autowired
     private IUserRepository userRepository;
+
     @Override
     public void addNum(UserAddNewParam addNewParam) {
-        log.debug("开始处理[新增标签]的业务,参数{}",addNewParam);
-        if (userRepository.countByName(addNewParam.getUserName())>0){
-            String message="新增标签失败,标签名称已存在";
+        log.debug("开始处理[新增标签]的业务,参数{}", addNewParam);
+        if (userRepository.countByName(addNewParam.getUserName()) > 0) {
+            String message = "新增标签失败,标签名称已存在";
             log.warn(message);
-            throw new ServiceException(ServiceCode.ERROR_CONFLICT,message);
+            throw new ServiceException(ServiceCode.ERROR_CONFLICT, message);
         }
         User user = new User();
-        BeanUtils.copyProperties(addNewParam,user);
+        BeanUtils.copyProperties(addNewParam, user);
         user.setUserName(addNewParam.getUserName());
         user.setPassword(addNewParam.getPassword());
         userRepository.insert(user);
     }
+
     @Override
     public void updateInfoById(UserUpdateInfoParam userUpdateInfoParam) {
         log.debug("开始处理【修改标签】的业务，参数：{}", userUpdateInfoParam);
@@ -73,14 +75,46 @@ public class UserServiceImpl implements IUserService {
     public void deleteById(Long id) {
         log.debug("开始处理【删除用户】的业务，参数：{}", id);
 
-        UserStandardVO currentUser =userRepository.getStandardById(id);
-        if (currentUser == null ) {
+        UserStandardVO currentUser = userRepository.getStandardById(id);
+        if (currentUser == null) {
             String message = "删除用户失败，尝试删除的用户数据不存在！";
             log.debug(message);
             throw new ServiceException(ServiceCode.ERROR_NOT_FOUND, message);
         }
         userRepository.deleteById(id);
     }
+
+    @Override
+    public void setUserEnable(Long id) {
+        log.debug("开始启用用户的权限,参数为{}", id);
+        updateEnableById(id, 1);
+    }
+
+    @Override
+    public void setUserDisable(Long id) {
+        log.debug("开始启用用户的权限,参数为{}", id);
+        updateEnableById(id, 0);
+    }
+
+    private void updateEnableById(Long id, Integer admin) {
+        UserStandardVO currentUser = userRepository.getStandardById(id);
+        if (currentUser.getAdmin() == admin) {
+            String message = ENABLE_TEXT[admin] + "标签失败，标签已经处于此状态！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_CONFLICT, message);
+        }
+        User user = new User();
+        user.setUserId(id);
+        user.setAdmin(admin);
+        user.setId(id);
+        int rows = userRepository.updateById(user);
+        if (rows != 1) {
+            String message = ENABLE_TEXT[admin] + "标签失败，服务器忙，请稍后再试！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_UPDATE, message);
+        }
+    }
+
 
     @Override
     public UserStandardVO getStandardByID(Long id) {
@@ -95,12 +129,14 @@ public class UserServiceImpl implements IUserService {
         }
         return currentUSer;
     }
+
     @Override
     public PageData<UserListItemVO> list(Integer pageNum) {
         log.debug("开始处理【查询标签列表】业务，页码：{}", pageNum);
         PageData<UserListItemVO> pageData = userRepository.list(pageNum, defaultQueryPageSize);
         return pageData;
     }
+
     @Override
     public PageData<UserListItemVO> list(Integer pageNum, Integer pageSize) {
         log.debug("开始处理【查询标签列表】业务，页码：{}，每页记录数：{}", pageNum, pageSize);

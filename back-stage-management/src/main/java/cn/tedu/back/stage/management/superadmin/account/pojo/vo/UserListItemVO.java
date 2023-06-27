@@ -14,5 +14,6 @@ public class UserListItemVO implements Serializable {
     private long id;
     private String userName;
     private String nickName;
+    private Integer admin;
 
 }

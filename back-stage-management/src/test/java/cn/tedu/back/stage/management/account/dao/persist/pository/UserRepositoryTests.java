@@ -1,7 +1,9 @@
 package cn.tedu.back.stage.management.account.dao.persist.pository;
 
+import cn.tedu.back.stage.management.common.pojo.vo.PageData;
 import cn.tedu.back.stage.management.superadmin.account.dao.persist.repository.IUserRepository;
 import cn.tedu.back.stage.management.superadmin.account.pojo.entity.User;
+import cn.tedu.back.stage.management.superadmin.account.pojo.vo.UserListItemVO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,7 +29,7 @@ public class UserRepositoryTests {
         user.setUserName("朱八");
         user.setNickName("八");
         user.setPassword("737382");
-        user.setAdmin("0");
+        user.setAdmin(0);
         user.setEMail("67825433@gmil.com");
         user.setGender("男");
         user.setIdNumber(00015L);
@@ -62,6 +64,14 @@ public class UserRepositoryTests {
 
         int rows = userRepository.updateById(user);
         System.out.println("修改数据完成，受影响的行数：" + rows);
+    }
+
+    @Test
+    void listTagType() {
+        Integer pageNum = 1;
+        Integer pageSize = 1;
+        PageData<UserListItemVO> pageData =userRepository.list(pageNum, pageSize);
+        System.out.println(pageData);
     }
 
 }

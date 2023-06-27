@@ -16,7 +16,7 @@ public class UserStandardVO implements Serializable {
     private String userName;
     private String password;
     private String nickName;
-    private String admin;
+    private Integer admin;
     private String eMail;
     private String gender;
     private String phoneNumber;

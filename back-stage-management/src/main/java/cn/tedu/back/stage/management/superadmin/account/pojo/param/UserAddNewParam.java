@@ -26,7 +26,7 @@ public class UserAddNewParam implements Serializable {
     /**
      * 权限管理
      */
-    private String admin;
+    private Integer admin;
     private String eMail;
     private String gender;
     private String phoneNumber;
