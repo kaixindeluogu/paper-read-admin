@@ -3,6 +3,7 @@ package cn.tedu.back.stage.management.superadmin.libraryapply.dao.repository.imp
 import cn.tedu.back.stage.management.superadmin.libraryapply.dao.mapper.LibraryMapper;
 import cn.tedu.back.stage.management.superadmin.libraryapply.dao.repository.ILibraryRepository;
 import cn.tedu.back.stage.management.superadmin.libraryapply.pojo.entity.Library;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,5 +27,13 @@ public class LibraryRepositoryImpl implements ILibraryRepository {
     @Override
     public int deleteById(Long id) {
         return mapper.deleteById(id);
+    }
+
+    @Override
+    public int countByName(String name) {
+        log.debug("根据名称【{}】统计【图书馆表】中的数据的数量", name);
+        QueryWrapper<Library> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name", name);
+        return mapper.selectCount(queryWrapper);
     }
 }
