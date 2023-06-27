@@ -1,4 +1,4 @@
-package cn.tedu.back.stage.management.content.dao.persist.pository;
+package cn.tedu.back.stage.management.account.dao.persist.pository;
 
 import cn.tedu.back.stage.management.superadmin.account.dao.persist.repository.IUserRepository;
 import cn.tedu.back.stage.management.superadmin.account.pojo.entity.User;

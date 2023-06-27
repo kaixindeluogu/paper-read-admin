@@ -11,10 +11,25 @@ import cn.tedu.back.stage.management.superadmin.account.pojo.vo.UserStandardVO;
  */
 
 public interface IUserRepository {
+    /**
+     * 插入User对象
+     * @param user
+     * @return
+     */
     int insert(User user);
 
+    /**
+     * 根据name 查找内容
+     * @param name
+     * @return
+     */
     int countByName(String name);
 
+    /**
+     * 根据ID删除标签
+     * @param id
+     * @return
+     */
     int deleteById(Long id);
     /**
      * 根据ID查询标签

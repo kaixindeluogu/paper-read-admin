@@ -1,4 +1,4 @@
-package cn.tedu.back.stage.management.content.dao.persist.mapper;
+package cn.tedu.back.stage.management.account.dao.persist.mapper;
 
 import cn.tedu.back.stage.management.superadmin.account.dao.persist.mapper.UserMapper;
 import cn.tedu.back.stage.management.superadmin.account.pojo.entity.User;

@@ -1,4 +1,4 @@
-package cn.tedu.back.stage.management.content.service;
+package cn.tedu.back.stage.management.account.service;
 
 import cn.tedu.back.stage.management.common.ex.ServiceException;
 import cn.tedu.back.stage.management.superadmin.account.service.IUserService;

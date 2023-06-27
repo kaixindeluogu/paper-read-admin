@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = "1.1. 内容管理-标签管理")
 public class UserController {
     public UserController() {
-        log.info("创建控制器对象: TagController");
+        log.info("创建控制器对象: UserController");
     }
 
     @Autowired
@@ -53,12 +53,12 @@ public class UserController {
     })
     @PostMapping("/{id:[0-9]+}/delete")
     public JsonResult delete(@PathVariable @Range(min = 1,message = "滚!!") Long id) {
-        log.debug("开始处理【删除标签】的请求，参数：{}", id);
+        log.debug("开始处理【删除用户】的请求，参数：{}", id);
         userService.deleteById(id);
         return JsonResult.ok();
     }
 
-    @ApiOperation("根据id查询标签")
+    @ApiOperation("根据id查询用户")
     @ApiOperationSupport(order = 400)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "标签ID", required = true, dataType = "long")
@@ -80,7 +80,7 @@ public class UserController {
     })
     @GetMapping("")
     public JsonResult list(Integer page, String queryType) {
-        log.debug("开始处理【显示标签列表】请求，页码：{}", page);
+        log.debug("开始处理【显示用户列表】请求，页码：{}", page);
         if (page == null) {
             page = 1;
         }
@@ -94,11 +94,11 @@ public class UserController {
         return JsonResult.ok(pageData);
     }
 
-    @ApiOperation("修改标签")
+    @ApiOperation("修改用户")
     @ApiOperationSupport(order = 300)
     @PostMapping("/{id:[0-9]+}/update/info")
     public JsonResult updateInfoById(@Validated UserUpdateInfoParam userUpdateInfoParam){
-        log.debug("开始处理[修改标签]的请求,参数:{}", userUpdateInfoParam);
+        log.debug("开始处理[修改用户]的请求,参数:{}", userUpdateInfoParam);
         userService.updateInfoById(userUpdateInfoParam);
         return JsonResult.ok();
     }
