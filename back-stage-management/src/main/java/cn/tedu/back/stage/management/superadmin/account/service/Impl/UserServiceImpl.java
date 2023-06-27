@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
  * Author = lee
  * DATE   = 2023/6/16  20:59
  */
+/*
 @Slf4j
 @Service
 public class UserServiceImpl implements IUserService {
@@ -144,3 +145,4 @@ public class UserServiceImpl implements IUserService {
         return pageData;
     }
 }
+*/
