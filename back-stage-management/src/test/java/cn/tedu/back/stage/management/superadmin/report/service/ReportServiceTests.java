@@ -1,5 +1,7 @@
 package cn.tedu.back.stage.management.superadmin.report.service;
 
+import cn.tedu.back.stage.management.bookadmin.bookdetails.dao.repository.IListLibraryBookRepository;
+import cn.tedu.back.stage.management.bookadmin.bookdetails.service.ILibraryBookService;
 import cn.tedu.back.stage.management.common.ex.ServiceException;
 import cn.tedu.back.stage.management.common.pojo.vo.PageData;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportListItemVO;
@@ -13,6 +15,15 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class ReportServiceTests {
+    @Autowired
+    IListLibraryBookRepository libraryBookService;
+
+    @Test
+    void select() {
+        Long id = 1L;
+        libraryBookService.selectBookById(id);
+
+    }
     @Autowired
     IReportService service;
 
