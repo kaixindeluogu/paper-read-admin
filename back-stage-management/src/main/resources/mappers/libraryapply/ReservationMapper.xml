@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.back.stage.management.superadmin.libraryapply.dao.mapper.ReservationMapper">
+    <!--List<ReservationListItemVO> listReservation()-->
+    <select id="listReservation" resultMap="listReservation">
+     SELECT
+            id, reservation_time, status, cancel_reason, return_time, number, user_id, book_id
+     FROM
+          zhipian_shop.zhipian_reservation
+     ORDER BY user_id DESC,book_id DESC,id DESC
+
+    </select>
+    <resultMap id="listReservation" type="cn.tedu.back.stage.management.superadmin.libraryapply.pojo.vo.ReservationListItemVO">
+        <id column="id" property="id"/>
+        <result column="reservation_time" property="reservationTime"/>
+        <result column="status" property="status"/>
+        <result column="cancel_reason" property="cancelReason"/>
+        <result column="number" property="number"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+    </resultMap>
+
+    <!--ReservationListItemVO getStandardById(Long id)-->
+    <select id="getStandardById" resultMap="getStandardById">
+        SELECT id, reservation_time, status, cancel_reason, return_time, number, user_id, book_id
+        FROM zhipian_shop.zhipian_reservation
+        where id=#{id}
+    </select>
+    <resultMap id="getStandardById" type="cn.tedu.back.stage.management.superadmin.libraryapply.pojo.vo.ReservationListItemVO">
+        <id column="id" property="id"/>
+        <result column="reservation_time" property="reservationTime"/>
+        <result column="status" property="status"/>
+        <result column="cancel_reason" property="cancelReason"/>
+        <result column="number" property="number"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+    </resultMap>
+
+
+</mapper>
