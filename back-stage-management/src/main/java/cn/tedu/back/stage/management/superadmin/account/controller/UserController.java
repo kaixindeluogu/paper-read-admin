@@ -28,10 +28,10 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/content/users")
-@Api(tags = "1.1. 内容管理-用户管理")
+@Api(tags = "1.1. 内容管理-标签管理")
 public class UserController {
     public UserController() {
-        log.info("创建控制器对象: UserController");
+        log.info("创建控制器对象: TagController");
     }
 
     @Autowired
@@ -53,12 +53,12 @@ public class UserController {
     })
     @PostMapping("/{id:[0-9]+}/delete")
     public JsonResult delete(@PathVariable @Range(min = 1,message = "滚!!") Long id) {
-        log.debug("开始处理【删除用户】的请求，参数：{}", id);
+        log.debug("开始处理【删除标签】的请求，参数：{}", id);
         userService.deleteById(id);
         return JsonResult.ok();
     }
 
-    @ApiOperation("根据id查询用户")
+    @ApiOperation("根据id查询标签")
     @ApiOperationSupport(order = 400)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "标签ID", required = true, dataType = "long")
@@ -80,7 +80,7 @@ public class UserController {
     })
     @GetMapping("")
     public JsonResult list(Integer page, String queryType) {
-        log.debug("开始处理【显示用户列表】请求，页码：{}", page);
+        log.debug("开始处理【显示标签列表】请求，页码：{}", page);
         if (page == null) {
             page = 1;
         }
@@ -94,30 +94,12 @@ public class UserController {
         return JsonResult.ok(pageData);
     }
 
-    @ApiOperation("修改用户")
+    @ApiOperation("修改标签")
     @ApiOperationSupport(order = 300)
     @PostMapping("/{id:[0-9]+}/update/info")
     public JsonResult updateInfoById(@Validated UserUpdateInfoParam userUpdateInfoParam){
-        log.debug("开始处理[修改用户]的请求,参数:{}", userUpdateInfoParam);
+        log.debug("开始处理[修改标签]的请求,参数:{}", userUpdateInfoParam);
         userService.updateInfoById(userUpdateInfoParam);
         return JsonResult.ok();
     }
-
-    @ApiOperation("启用用户权限")
-    @ApiOperationSupport(order = 310)
-    @PostMapping("/{id:[0-9]+}/enable")
-    public JsonResult setEnable(@PathVariable @Range(min = 1,message = "禁用标签失败,请提交合法的ID值") Long id) {
-        log.debug("开始处理【启用标签】的请求，参数：{}", id);
-        userService.setUserEnable(id);
-        return JsonResult.ok();
-    }
-    @ApiOperation("禁用用户权限")
-    @ApiOperationSupport(order = 311)
-    @PostMapping("/{id:[0-9]+}/disable")
-    public JsonResult setDisable(@PathVariable @Range(min = 1,message = "禁用标签失败,请提交合法的ID值") Long id){
-        log.debug("开始处理【禁用标签】的请求，参数：{}", id);
-        userService.setUserDisable(id);
-        return JsonResult.ok();
-    }
-    
 }

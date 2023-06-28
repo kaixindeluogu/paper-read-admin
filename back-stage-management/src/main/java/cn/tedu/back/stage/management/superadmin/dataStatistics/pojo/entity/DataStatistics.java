@@ -13,14 +13,20 @@ public class DataStatistics {
      */
     @TableId(type = IdType.AUTO)
     private Long id;
-    //zhipian_library需要的字段
+    /**
+     * 图书馆名
+     */
     private String name;
-    private Long click_num;
+    /**
+     * 借阅量
+     */
+    private Integer borrowing_volume;
+    /**
+     * 地址
+     */
     private String address;
-
-    //zhipian_comment需要的字段
-    private String user_id;
-
-    //zhipian_user需要的字段
+    /**
+     * 评论量
+     */
     private String user_name;
 }

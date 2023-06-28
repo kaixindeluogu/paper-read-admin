@@ -24,7 +24,7 @@ public class DataStatisticsServiceImpl implements IDataStatisticsService {
 
     @Override
     public void DataStatisticsById(Long id) {
-        log.debug("开始处理【删除举报信息】的业务，参数：{}", id);
+        log.debug("开始处理【删除信息】的业务，参数：{}", id);
 
         DataStatisticsListItemVO currentReport = dataStatisticsRepository.listTypeId(id);
         if (currentReport == null) {
@@ -43,7 +43,7 @@ public class DataStatisticsServiceImpl implements IDataStatisticsService {
 
     @Override
     public DataStatisticsListItemVO listTypeId(Long id) {
-        log.debug("开始处理【根据ID查询举报信息】业务，参数：{}", id);
+        log.debug("开始处理【根据ID查询信息】业务，参数：{}", id);
         DataStatisticsListItemVO currentReport = dataStatisticsRepository.listTypeId(id);
         if (currentReport == null) {
             String message = "获取信息失败，尝试访问的信息不存在！";
@@ -55,14 +55,14 @@ public class DataStatisticsServiceImpl implements IDataStatisticsService {
 
     @Override
     public PageData<DataStatisticsListItemVO> listType1(Integer pageNum, Integer pageSize) {
-        log.debug("开始处理【查询举报信息列表】业务，页码：{},每页记录数:{}", pageNum,pageSize);
+        log.debug("开始处理【查询信息列表】业务，页码：{},每页记录数:{}", pageNum,pageSize);
         PageData<DataStatisticsListItemVO> pageData = dataStatisticsRepository.listTypeId(pageNum, pageSize);
         return pageData;
     }
 
     @Override
     public PageData<DataStatisticsListItemVO> listType(Integer pageNum) {
-        log.debug("开始处理【查询举报信息列表】业务，页码：{}", pageNum);
+        log.debug("开始处理【查询信息列表】业务，页码：{}", pageNum);
         PageData<DataStatisticsListItemVO> pageData = dataStatisticsRepository.listTypeId(pageNum, defaultQueryPageSize);
         return pageData;
     }
