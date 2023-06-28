@@ -32,6 +32,8 @@ public class BannerController {
         log.info("创建控制器对象: bannerService");
     }
 
+
+    //新增轮播图
     @PostMapping("upload")
     public JsonResult upload(@RequestBody BannerParam bannerParam) {
         log.debug("开始处理新增轮播表业务请求:{}", bannerParam);

@@ -1,5 +1,6 @@
 package cn.tedu.back.stage.management.superadmin.libraryapply.dao.repository;
 
+
 import cn.tedu.back.stage.management.superadmin.libraryapply.pojo.entity.Library;
 
 public interface ILibraryRepository {
@@ -12,4 +13,6 @@ public interface ILibraryRepository {
      * @return 受影响的行数
      */
     int deleteById(Long id);
+
+    int countByName(String name);
 }

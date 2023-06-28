@@ -1,9 +1,11 @@
 package cn.tedu.back.stage.management.superadmin.libraryapply.controller;
 
 import cn.tedu.back.stage.management.common.web.JsonResult;
+
+
 import cn.tedu.back.stage.management.superadmin.libraryapply.pojo.param.LibraryAddNewParam;
-import cn.tedu.back.stage.management.superadmin.libraryapply.pojo.param.LibraryApplyAddNewParam;
 import cn.tedu.back.stage.management.superadmin.libraryapply.service.ILibraryService;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping("/v1/admin/library/")
+@Api(tags = "1.2. 图书馆管理")
 public class LibraryController {
     @Autowired
     private ILibraryService service;

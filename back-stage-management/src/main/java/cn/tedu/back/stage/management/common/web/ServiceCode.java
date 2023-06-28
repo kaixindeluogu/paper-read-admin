@@ -36,6 +36,11 @@ public enum ServiceCode {
     /**
      * 错误：未知的修改数据失败
      */
+    /**
+     * 错误:未知的删除数据失败
+     */
+    ERROR_DELETE(50100),
+
     ERROR_UPDATE(50200),
     /**
      * 错误：其它异常
