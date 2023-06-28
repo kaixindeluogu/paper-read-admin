@@ -5,7 +5,7 @@
 
 
         <select id="listTypeId" resultMap="multiTableResultMap" >
-            SELECT  id,name, click_num, address, user_id, user_name
+            SELECT  id,name,borrowing_volume,  address,  user_name
             FROM
             zhipian_shop.zhipian_datastatistics
             WHERE id=#{id}
@@ -13,7 +13,7 @@
 
         <select id="listType" resultMap="ListResultMap">
             SELECT
-                id,name, click_num, address, user_id, user_name
+                id,name,borrowing_volume, address, user_name
             FROM
                 zhipian_shop.zhipian_datastatistics
             ORDER BY
@@ -24,9 +24,8 @@
     <resultMap id="multiTableResultMap" type="cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.vo.DataStatisticsListItemVO">
         <id column="id" property="id"/>
         <result property="name" column="name"/>
-        <result property="click_num" column="clickNum"/>
         <result property="address" column="address"/>
-        <result property="user_id" column="userId"/>
+        <result property="borrowing_volume" column="borrowingVolume"/>
         <result property="user_name" column="userName"/>
     </resultMap>
 
@@ -36,9 +35,8 @@
                type="cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.vo.DataStatisticsListItemVO">
         <id column="id" property="id"/>
         <result property="name" column="name"/>
-        <result property="click_num" column="clickNum"/>
         <result property="address" column="address"/>
-        <result property="user_id" column="userId"/>
+        <result property="borrowing_volume" column="borrowingVolume"/>
         <result property="user_name" column="userName"/>
     </resultMap>
 </mapper>

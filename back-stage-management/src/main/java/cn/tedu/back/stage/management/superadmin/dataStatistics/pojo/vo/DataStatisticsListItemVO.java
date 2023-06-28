@@ -8,13 +8,25 @@ import lombok.Data;
 public class DataStatisticsListItemVO {
 
 
+    /**
+     * 数据id
+     */
+    @TableId(type = IdType.AUTO)
     private Long id;
-    //zhipian_library需要的字段
+    /**
+     * 图书馆名
+     */
     private String name;
-    private Long clickNum;
+    /**
+     * 借阅量
+     */
+    private Integer borrowingVolume;
+    /**
+     * 地址
+     */
     private String address;
-    //zhipian_comment需要的字段
-    private String userId;
-    //zhipian_user需要的字段
+    /**
+     * 评论量
+     */
     private String userName;
 }

@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/content/users")
-@Api(tags = "1.2. 内容管理-用户管理")
+@Api(tags = "1.1. 内容管理-用户管理")
 public class UserController {
     public UserController() {
         log.info("创建控制器对象: UserController");
