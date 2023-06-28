@@ -20,7 +20,9 @@ import org.springframework.context.annotation.Configuration;
         "cn.tedu.back.stage.management.superadmin.book.persist.mapper",
         "cn.tedu.back.stage.management.superadmin.dataStatistics.dao.mapper",
         "cn.tedu.back.stage.management.bookadmin.bookdetails.dao.mapper",
-        "cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper"
+        "cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper",
+        "cn.tedu.back.stage.management.bookadmin.**.**.mapper",
+
 })
 public class MyBatisConfiguration {
 

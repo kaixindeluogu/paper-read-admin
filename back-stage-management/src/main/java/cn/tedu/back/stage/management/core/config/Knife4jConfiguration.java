@@ -29,7 +29,7 @@ public class Knife4jConfiguration {
     /**
      * 【重要】指定Controller包路径
      */
-    private String basePackage = "cn.tedu.back.stage.management.superadmin";
+    private String basePackage = "cn.tedu.back.stage.management";
     /**
      * 主机名
      */
@@ -37,11 +37,11 @@ public class Knife4jConfiguration {
     /**
      * 标题
      */
-    private String title = "学茶商城后台管理平台在线API文档";
+    private String title = "纸片图书后台管理平台在线API文档";
     /**
      * 简介
      */
-    private String description = "学茶商城后台管理平台在线API文档";
+    private String description = "纸片图书后台管理平台在线API文档";
     /**
      * 服务条款URL
      */
