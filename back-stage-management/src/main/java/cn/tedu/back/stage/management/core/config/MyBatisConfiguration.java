@@ -23,6 +23,8 @@ import org.springframework.context.annotation.Configuration;
         "cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper",
         "cn.tedu.back.stage.management.bookadmin.**.**.mapper",
 
+        "cn.tedu.back.stage.management.bookadmin.bookdetails.dao.mapper",
+        "cn.tedu.back.stage.management.bookadmin.libraryRule.dao.mapper"
 })
 public class MyBatisConfiguration {
 

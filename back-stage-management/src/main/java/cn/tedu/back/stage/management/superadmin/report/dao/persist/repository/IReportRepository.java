@@ -1,6 +1,7 @@
 package cn.tedu.back.stage.management.superadmin.report.dao.persist.repository;
 
 import cn.tedu.back.stage.management.common.pojo.vo.PageData;
+import cn.tedu.back.stage.management.superadmin.report.pojo.entity.Report;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportListItemVO;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportStandardVO;
 
@@ -19,6 +20,15 @@ public interface IReportRepository {
      * @return 受影响的行数
      */
     int deleteById(Long id);
+
+    /**
+     * 根据ID修改举报数据
+     *
+     * @param report 封装了被修改数据的ID和新数据的对象
+     * @return 受影响的行数
+     */
+    int updateById(Report report);
+
 
     /**
      * 根据ID查询举报信息

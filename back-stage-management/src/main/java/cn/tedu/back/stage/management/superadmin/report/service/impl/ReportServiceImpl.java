@@ -4,12 +4,11 @@ import cn.tedu.back.stage.management.common.ex.ServiceException;
 import cn.tedu.back.stage.management.common.pojo.vo.PageData;
 import cn.tedu.back.stage.management.common.web.ServiceCode;
 import cn.tedu.back.stage.management.superadmin.report.dao.persist.repository.IReportRepository;
-import cn.tedu.back.stage.management.superadmin.report.pojo.param.ReportAddNewParam;
+import cn.tedu.back.stage.management.superadmin.report.pojo.entity.Report;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportListItemVO;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportStandardVO;
 import cn.tedu.back.stage.management.superadmin.report.service.IReportService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -52,6 +51,17 @@ public class ReportServiceImpl implements IReportService {
         }
     }
 
+    /*@Override
+    public void updateInfoById(ReportUpdateInfoParam reportUpdateInfoParam) {
+
+    }*/
+
+    @Override
+    public void setReportStatus(Long id) {
+        log.debug("开始处理[通过审批]的业务,参数:{}",id);
+        updateReportStatusById(id,1);
+    }
+
     @Override
     public ReportStandardVO getStandardById(Long id) {
         log.debug("开始处理【根据ID查询举报信息】业务，参数：{}", id);
@@ -76,5 +86,30 @@ public class ReportServiceImpl implements IReportService {
         log.debug("开始处理【查询举报信息列表】业务，页码：{}", pageNum);
         PageData<ReportListItemVO> pageData = repository.list(pageNum, defaultQueryPageSize);
         return pageData;
+    }
+
+    private void updateReportStatusById(Long id, Integer status) {
+        ReportStandardVO currentReport = repository.getStandardById(id);
+        if (currentReport == null) {
+            String message = "审批失败，尝试访问的的数据不存在！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_NOT_FOUND, message);
+        }
+
+        if (currentReport.getStatus() == status) {
+            String message = "审批失败，该举报信息已经通过审批！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_CONFLICT, message);
+        }
+
+        Report report = new Report();
+        report.setId(id);
+        report.setStatus(status);
+        int rows = repository.updateById(report);
+        if (rows != 1) {
+            String message = "服务器忙，请稍后再试！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_UPDATE, message);
+        }
     }
 }

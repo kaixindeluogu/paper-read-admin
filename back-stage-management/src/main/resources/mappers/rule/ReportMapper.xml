@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.back.stage.management.bookadmin.libraryRule.dao.mapper.RuleMapper">
+
+    <!-- RuleStandardVO getStandardById(Long id); -->
+    <select id="getStandardById" resultMap="StandardResultMap">
+        SELECT
+            id, borrow_period, borrow_limit, borrow_rule, overdue_fine_rule, lost_damage_rule, library_id
+        FROM
+            zhipian_shop.zhipian_library_rule
+        WHERE
+            id=#{id}
+    </select>
+
+    <!--List<RuleListItemVO> list();-->
+    <select id="list" resultMap="ListResultMap">
+        SELECT
+            id, borrow_period, borrow_limit, borrow_rule, overdue_fine_rule, lost_damage_rule, library_id
+        FROM
+            zhipian_shop.zhipian_library_rule
+        ORDER BY
+            id DESC
+    </select>
+
+
+
+    <resultMap id="StandardResultMap"
+               type="cn.tedu.back.stage.management.bookadmin.libraryRule.pojo.vo.RuleStandardVO">
+        <id column="id" property="id"/>
+        <result column="borrow_period" property="borrowPeriod"/>
+        <result column="borrow_limit" property="borrowLimit"/>
+        <result column="borrow_rule" property="borrowRule"/>
+        <result column="overdue_fine_rule" property="overdueFineRule"/>
+        <result column="lost_damage_rule" property="lostDamageRule"/>
+        <result column="library_id" property="libraryId"/>
+    </resultMap>
+
+    <resultMap id="ListResultMap"
+               type="cn.tedu.back.stage.management.bookadmin.libraryRule.pojo.vo.RuleListItemVO">
+        <id column="id" property="id"/>
+        <result column="borrow_period" property="borrowPeriod"/>
+        <result column="borrow_limit" property="borrowLimit"/>
+        <result column="borrow_rule" property="borrowRule"/>
+        <result column="overdue_fine_rule" property="overdueFineRule"/>
+        <result column="lost_damage_rule" property="lostDamageRule"/>
+        <result column="library_id" property="libraryId"/>
+    </resultMap>
+
+
+
+</mapper>

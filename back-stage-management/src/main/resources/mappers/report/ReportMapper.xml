@@ -6,7 +6,7 @@
     <!-- ReportStandardVO getStandardById(Long id); -->
     <select id="getStandardById" resultMap="StandardResultMap">
         SELECT
-            id, report_content,img_url, user_id, book_id, library_id, gmt_create
+            id, report_content,img_url, user_id, book_id, library_id, gmt_create,status
         FROM
             zhipian_shop.zhipian_report
         WHERE
@@ -16,7 +16,7 @@
     <!-- List<ReportListItemVO> reportList(); -->
     <select id="list" resultMap="ListResultMap">
         SELECT
-            id, report_content,img_url, user_id, book_id, library_id, gmt_create
+            id, report_content,img_url, user_id, book_id, library_id, gmt_create,status
         FROM
             zhipian_shop.zhipian_report
         ORDER BY
@@ -33,6 +33,7 @@
         <result column="book_id" property="bookId"/>
         <result column="library_id" property="libraryId"/>
         <result column="gmt_create" property="gmtCreate"/>
+        <result column="status" property="status"/>
     </resultMap>
 
     <resultMap id="ListResultMap"
@@ -44,6 +45,7 @@
         <result column="book_id" property="bookId"/>
         <result column="library_id" property="libraryId"/>
         <result column="gmt_create" property="gmtCreate"/>
+        <result column="status" property="status"/>
     </resultMap>
 
 

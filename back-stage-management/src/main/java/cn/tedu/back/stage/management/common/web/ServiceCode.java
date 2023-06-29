@@ -34,6 +34,10 @@ public enum ServiceCode {
  * */
     IO_ERROR(50000),
     /**
+     * 错误：未知的插入数据失败
+     */
+    ERROR_INSERT(50100),
+    /**
      * 错误：未知的修改数据失败
      */
     /**

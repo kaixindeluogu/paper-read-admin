@@ -3,6 +3,7 @@ package cn.tedu.back.stage.management.superadmin.report.pojo.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("zhipian_report")
-public class Report {
+public class Report implements Serializable {
     /**数据ID*/
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -25,6 +26,8 @@ public class Report {
     private Long bookId;
     /**举报的图书馆*/
     private Long libraryId;
+    /**状态*/
+    private Integer status;
     /**创建时间*/
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime gmtCreate;

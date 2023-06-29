@@ -25,6 +25,8 @@ public class ReportListItemVO implements Serializable {
     private Long bookId;
     /**举报的图书馆*/
     private Long libraryId;
+    /**状态*/
+    private Integer status;
     /**举报时间*/
     private LocalDateTime gmtCreate;
 }

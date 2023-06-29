@@ -5,6 +5,7 @@ import cn.tedu.back.stage.management.common.util.PageInfoToPageDataConverter;
 
 import cn.tedu.back.stage.management.superadmin.report.dao.persist.mapper.ReportMapper;
 import cn.tedu.back.stage.management.superadmin.report.dao.persist.repository.IReportRepository;
+import cn.tedu.back.stage.management.superadmin.report.pojo.entity.Report;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportListItemVO;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportStandardVO;
 import com.github.pagehelper.PageHelper;
@@ -35,6 +36,12 @@ public class ReportRepositoryImpl implements IReportRepository {
     public int deleteById(Long id) {
         log.debug("开始执行【根据ID删除举报数据】，参数：{}", id);
         return mapper.deleteById(id);
+    }
+
+    @Override
+    public int updateById(Report report) {
+        log.debug("开始执行[根据id修改举报数据],参数为:{}",report);
+        return mapper.updateById(report);
     }
 
     @Override

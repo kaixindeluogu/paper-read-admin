@@ -1,5 +1,6 @@
 package cn.tedu.back.stage.management.superadmin.report.controller;
 
+import cn.tedu.back.stage.management.bookadmin.libraryRule.pojo.param.RuleUpdateInfoParam;
 import cn.tedu.back.stage.management.common.pojo.vo.PageData;
 import cn.tedu.back.stage.management.common.web.JsonResult;
 import cn.tedu.back.stage.management.superadmin.report.pojo.vo.ReportListItemVO;
@@ -66,7 +67,7 @@ public class ReportController {
             @ApiImplicitParam(name = "queryType", value = "查询类型，当需要查询全部数据时，此参数值应该是all")
     })
     @GetMapping("/list")
-    public JsonResult listTagType(Integer page, String queryType){
+    public JsonResult listReport(Integer page, String queryType){
         log.debug("开始处理[查询举报信息列表]请求,页码:{}",page);
         if (page == null) {
             page = 1;
@@ -79,5 +80,12 @@ public class ReportController {
             pageData = service.list(pageNum);
         }
         return JsonResult.ok(pageData);
+    }
+
+    @PostMapping("/{id:[0-9]+}/pass")
+    public JsonResult passReport(@PathVariable @Range(min = 1, message = "审批失败,请提交合法的id值!") Long id) {
+        log.debug("开始处理【通过审批】的请求，参数：{}", id);
+        service.setReportStatus(id);
+        return JsonResult.ok();
     }
 }

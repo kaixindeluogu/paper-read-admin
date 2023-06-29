@@ -17,6 +17,20 @@ public interface IReportService {
     void delete(Long id);
 
     /**
+     *修改举报信息
+     *
+     * @param reportUpdateInfoParam 封装了被修改数据的id和新数据的对象
+     */
+   /* void updateInfoById(ReportUpdateInfoParam reportUpdateInfoParam);*/
+
+    /**
+     * 通过审批
+     *
+     * @param id 举报信息的id
+     */
+    void setReportStatus(Long id);
+
+    /**
      *根据ID查询举报信息
      *
      *  @param id 举报信息id
