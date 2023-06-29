@@ -2,11 +2,10 @@ package cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName(value = "zhipian_datastatistics")
+//@TableName(value = "zhipian_datastatistics")
 public class DataStatistics {
     /**
      * 数据id
@@ -14,19 +13,23 @@ public class DataStatistics {
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 图书馆名
+     * zhipian_library 图书馆名
      */
     private String name;
     /**
-     * 借阅量
+     * zhipian_book 总借阅量
      */
-    private Integer borrowing_volume;
+    private Integer borrowingVolume;
     /**
-     * 地址
+     * zhipian_library 地址
      */
     private String address;
     /**
-     * 评论量
+     * zhipian_book 总书籍数量
      */
-    private String user_name;
+    private Integer storeAmount;
+    /**
+     * zhipian_user 总用户人数
+     */
+    private Integer userId;
 }

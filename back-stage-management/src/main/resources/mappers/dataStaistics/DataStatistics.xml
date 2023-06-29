@@ -5,38 +5,45 @@
 
 
         <select id="listTypeId" resultMap="multiTableResultMap" >
-            SELECT  id,name,borrowing_volume,  address,  user_name
+            SELECT  b.id,l.id,l.name,b.borrowing_volume,  l.address,  b.store_amount,u.user_id
             FROM
-            zhipian_shop.zhipian_datastatistics
-            WHERE id=#{id}
+            zhipian_shop.zhipian_book b
+            LEFT JOIN zhipian_shop.zhipian_library l ON b.library_id =l.id
+            LEFT JOIN zhipian_shop.zhipian_comment c ON b.id=c.book_id
+            LEFT JOIN zhipian_shop.zhipian_user u ON b.user_id=u.id
+            WHERE b.id=#{id}
         </select>
 
         <select id="listType" resultMap="ListResultMap">
-            SELECT
-                id,name,borrowing_volume, address, user_name
+            SELECT   b.id,l.id,l.name,b.borrowing_volume,  l.address,  b.store_amount,u.user_id
             FROM
-                zhipian_shop.zhipian_datastatistics
+                zhipian_shop.zhipian_book b
+                    LEFT JOIN zhipian_shop.zhipian_library l ON b.library_id =l.id
+                    LEFT JOIN zhipian_shop.zhipian_comment c ON b.id=c.book_id
+                    LEFT JOIN zhipian_shop.zhipian_user u ON b.user_id=u.id
             ORDER BY
-                id DESC
+                b.id DESC
         </select>
 
 
     <resultMap id="multiTableResultMap" type="cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.vo.DataStatisticsListItemVO">
-        <id column="id" property="id"/>
+        <id column="b.id" property="Id"/>
         <result property="name" column="name"/>
         <result property="address" column="address"/>
         <result property="borrowing_volume" column="borrowingVolume"/>
-        <result property="user_name" column="userName"/>
+        <result property="store_amount" column="storeAmount"/>
+        <result property="user_id" column="userId"/>
     </resultMap>
 
 
 
     <resultMap id="ListResultMap"
                type="cn.tedu.back.stage.management.superadmin.dataStatistics.pojo.vo.DataStatisticsListItemVO">
-        <id column="id" property="id"/>
+        <id column="b.id" property="Id"/>
         <result property="name" column="name"/>
         <result property="address" column="address"/>
         <result property="borrowing_volume" column="borrowingVolume"/>
-        <result property="user_name" column="userName"/>
+        <result property="store_amount" column="storeAmount"/>
+        <result property="user_id" column="userId"/>
     </resultMap>
 </mapper>

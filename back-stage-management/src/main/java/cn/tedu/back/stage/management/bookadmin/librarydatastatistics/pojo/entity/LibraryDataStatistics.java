@@ -6,7 +6,6 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@TableName(value = "zhipian_datastatistics")
 public class LibraryDataStatistics {
     /**
      * 数据id
@@ -14,21 +13,25 @@ public class LibraryDataStatistics {
     @TableId(type= IdType.AUTO)
     private Long id;
     /**
-     * 图书馆名
+     * zhipian_library图书馆名
      */
     private String name;
     /**
-     * 图书分类
+     * zhipian_category 图书分类
      */
     private Integer categoryId;
     /**
-     *书籍库存量
+     *zhipian_book 书籍库存量
      */
     private Integer storeAmount;
     /**
-     * 借阅量
+     * zhipian_book 借阅量
      */
     private Integer borrowingVolume;
+    /**
+     * zhipian_library 图书馆点击量
+     */
+    private Long clickNum;
     /**
      * 数据创建时间
      */

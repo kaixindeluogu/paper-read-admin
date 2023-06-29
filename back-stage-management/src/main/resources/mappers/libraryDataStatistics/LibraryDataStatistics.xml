@@ -6,43 +6,48 @@
 
         <select id="listTypeId1" resultMap="multiTableResultMap" >
             SELECT
-                id,name,category_id, store_amount, borrowing_volume
+                b.id,l.name,b.category_id, b.store_amount, b.borrowing_volume,l.click_num
             FROM
-                zhipian_shop.zhipian_datastatistics
+                zhipian_shop.zhipian_book b
+            LEFT JOIN zhipian_shop.zhipian_library l ON b.library_id=l.id
+            LEFT JOIN zhipian_shop.zhipian_category c ON b.category_id=c.id
 
-            WHERE id=#{id}
+            WHERE b.id=#{id}
 
         </select>
 
 
         <select id="listType1" resultMap="ListResultMap">
             SELECT
-               id,name,category_id, store_amount, borrowing_volume
+                b.id,l.name,b.category_id, b.store_amount, b.borrowing_volume,l.click_num
             FROM
-                zhipian_shop.zhipian_datastatistics
-
+                zhipian_shop.zhipian_book b
+                    LEFT JOIN zhipian_shop.zhipian_library l ON b.library_id=l.id
+                    LEFT JOIN zhipian_shop.zhipian_category c ON b.category_id=c.id
             ORDER BY
-                id DESC
+                b.id DESC
         </select>
 
 
     <resultMap id="multiTableResultMap" type="cn.tedu.back.stage.management.bookadmin.librarydatastatistics.pojo.vo.LibraryDataStatisticsListItemVO">
-        <id column="id" property="id"/>
+        <id column="b.id" property="id"/>
         <result property="name" column="name"/>
         <result property="category_id" column="categoryId"/>
         <result property="store_amount" column="storeAmount"/>
         <result property="borrowing_volume" column="borrowingVolume"/>
+        <result property="click_num" column="clickNum"/>
     </resultMap>
 
 
 
     <resultMap id="ListResultMap"
                type="cn.tedu.back.stage.management.bookadmin.librarydatastatistics.pojo.vo.LibraryDataStatisticsListItemVO">
-        <id column="id" property="id"/>
+        <id column="b.id" property="id"/>
         <result property="name" column="name"/>
         <result property="category_id" column="categoryId"/>
         <result property="store_amount" column="storeAmount"/>
         <result property="borrowing_volume" column="borrowingVolume"/>
+        <result property="click_num" column="clickNum"/>
     </resultMap>
 
 </mapper>

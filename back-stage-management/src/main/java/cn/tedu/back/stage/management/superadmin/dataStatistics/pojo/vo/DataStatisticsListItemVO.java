@@ -7,26 +7,29 @@ import lombok.Data;
 @Data
 public class DataStatisticsListItemVO {
 
-
     /**
      * 数据id
      */
     @TableId(type = IdType.AUTO)
     private Long id;
     /**
-     * 图书馆名
+     * zhipian_library 图书馆名
      */
     private String name;
     /**
-     * 借阅量
+     * zhipian_book 总借阅量
      */
     private Integer borrowingVolume;
     /**
-     * 地址
+     * zhipian_library 地址
      */
     private String address;
     /**
-     * 评论量
+     * zhipian_book 总书籍数量
      */
-    private String userName;
+    private Integer storeAmount;
+    /**
+     * zhipian_user 总用户人数
+     */
+    private Integer userId;
 }
