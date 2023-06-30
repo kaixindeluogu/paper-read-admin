@@ -11,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 public class UserListItemVO implements Serializable {
-    private long id;
+    private Long id;
     private String userName;
     private String nickName;
     private Integer admin;

@@ -2,6 +2,7 @@ package cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,7 +14,9 @@ import java.util.Date;
  * DATE   = 2023/6/28  18:09
  */
 @Data
+@TableName("zhipian_reservation")
 public class OrderApproval implements Serializable {
+
     private Long  id;
     /**
      * 预约时间

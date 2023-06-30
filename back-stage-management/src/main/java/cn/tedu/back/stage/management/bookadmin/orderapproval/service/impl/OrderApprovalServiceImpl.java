@@ -1,6 +1,7 @@
 package cn.tedu.back.stage.management.bookadmin.orderapproval.service.impl;
 
 import cn.tedu.back.stage.management.bookadmin.orderapproval.dao.persist.repository.IOrderApprovalRepository;
+import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.entity.OrderApproval;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalListItemVO;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalStandardVO;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.service.IOrderApprovalService;
@@ -19,11 +20,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderApprovalServiceImpl implements IOrderApprovalService {
 
-    private Integer defaultQueryPageSize =10;
+    private Integer defaultQueryPageSize = 10;
     @Autowired
     private IOrderApprovalRepository repository;
 
-    public OrderApprovalServiceImpl(){
+    public OrderApprovalServiceImpl() {
         log.info("创建业务对象:ReportServiceImpl");
     }
 
@@ -61,7 +62,7 @@ public class OrderApprovalServiceImpl implements IOrderApprovalService {
 
     @Override
     public PageData<OrderApprovalListItemVO> list(Integer pageNum, Integer pageSize) {
-        log.debug("开始处理【查询订单信息列表】业务，页码：{},每页记录数:{}", pageNum,pageSize);
+        log.debug("开始处理【查询订单信息列表】业务，页码：{},每页记录数:{}", pageNum, pageSize);
         PageData<OrderApprovalListItemVO> pageData = repository.list(pageNum, pageSize);
         return pageData;
     }
@@ -69,7 +70,36 @@ public class OrderApprovalServiceImpl implements IOrderApprovalService {
     @Override
     public PageData<OrderApprovalListItemVO> list(Integer pageNum) {
         log.debug("开始处理【查询订单信息列表】业务，页码：{}", pageNum);
+
         PageData<OrderApprovalListItemVO> pageData = repository.list(pageNum, defaultQueryPageSize);
         return pageData;
+    }
+
+    @Override
+    public void setApprovalStatus(Long id, Integer status) {
+        log.debug("开始处理[通过审批]的业务,参数:{}", id);
+        String[] statusList = {"已预约","已取消","已借阅","逾期"};
+        updateReportStatusById(id, statusList[status]);
+    }
+
+    private void updateReportStatusById(Long id, String status) {
+        OrderApprovalStandardVO currentReport = repository.getStandardById(id);
+        if (currentReport == null) {
+            String message = "审批失败，尝试访问的的数据不存在！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_NOT_FOUND, message);
+        }
+
+        OrderApproval approval = new OrderApproval();
+        approval.setId(id);
+        approval.setStatus(status);
+        int rows = repository.updateById(approval);
+        if (rows != 1) {
+            String message = "服务器忙，请稍后再试！";
+            log.warn(message);
+            throw new ServiceException(ServiceCode.ERROR_UPDATE, message);
+        }
+
+
     }
 }

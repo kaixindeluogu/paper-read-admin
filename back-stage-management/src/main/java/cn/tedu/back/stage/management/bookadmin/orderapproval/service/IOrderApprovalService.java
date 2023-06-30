@@ -16,6 +16,12 @@ public interface IOrderApprovalService {
     void delete(Long id);
 
     /**
+     * 通过审批
+     *
+     * @param id 预约信息的id
+     */
+    void setApprovalStatus(Long id,Integer status);
+    /**
      *根据ID查询举报信息
      *
      *  @param id 举报信息id

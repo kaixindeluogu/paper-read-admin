@@ -12,6 +12,9 @@ import java.util.Date;
 @Data
 public class OrderApprovalListItemVO implements Serializable {
     private Long  id;
+
+    private String userName;
+    private String bookName;
     /**
      * 预约时间
      */
@@ -40,4 +43,5 @@ public class OrderApprovalListItemVO implements Serializable {
      * 书籍ID
      */
     private Long bookId;
+
 }

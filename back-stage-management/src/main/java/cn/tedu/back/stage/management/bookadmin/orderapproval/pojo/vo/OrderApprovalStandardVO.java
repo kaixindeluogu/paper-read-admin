@@ -20,7 +20,7 @@ public class OrderApprovalStandardVO  implements Serializable {
      */
     private Date reservationTime;
     /**
-     * 状态(已预约,已取消,已借阅,逾期)
+     * 状态(0已预约,1已取消,2已借阅,3逾期)
      */
     private String status;
     /**
@@ -43,13 +43,14 @@ public class OrderApprovalStandardVO  implements Serializable {
      * 书籍ID
      */
     private Long bookId;
+
+    private String bookName;
     /**创建时间*/
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime gmtCreate;
     /**修改时间*/
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime gmtModified;
-    private String bookName;
 
 
 }

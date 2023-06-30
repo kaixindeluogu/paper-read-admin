@@ -13,18 +13,17 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @MapperScan({
-        "cn.tedu.back.stage.management.superadmin.account.dao.persist.mapper",
+       /* "cn.tedu.back.stage.management.superadmin.account.dao.persist.mapper",
         "cn.tedu.back.stage.management.superadmin.banner.dao.mapper",
         "cn.tedu.back.stage.management.superadmin.libraryapply.dao.mapper",
         "cn.tedu.back.stage.management.superadmin.report.dao.persist.mapper",
         "cn.tedu.back.stage.management.superadmin.book.persist.mapper",
         "cn.tedu.back.stage.management.superadmin.dataStatistics.dao.mapper",
         "cn.tedu.back.stage.management.bookadmin.bookdetails.dao.mapper",
-        "cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper",
+        "cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper",*/
+        "cn.tedu.back.stage.management.superadmin.**.**.mapper",
         "cn.tedu.back.stage.management.bookadmin.**.**.mapper",
 
-        "cn.tedu.back.stage.management.bookadmin.bookdetails.dao.mapper",
-        "cn.tedu.back.stage.management.bookadmin.libraryRule.dao.mapper"
 })
 public class MyBatisConfiguration {
 

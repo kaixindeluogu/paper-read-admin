@@ -1,15 +1,15 @@
 package cn.tedu.back.stage.management.bookadmin.orderapproval.dao.persist.mapper;
 
+import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.entity.OrderApproval;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalListItemVO;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalStandardVO;
-import cn.tedu.back.stage.management.superadmin.report.pojo.vo.Report;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface OrderMapper extends BaseMapper<Report> {
+public interface OrderMapper extends BaseMapper<OrderApproval> {
     /**
      * 根据ID查询标签
      *

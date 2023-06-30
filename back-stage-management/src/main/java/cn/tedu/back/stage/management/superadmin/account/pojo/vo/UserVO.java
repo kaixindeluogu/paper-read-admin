@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 @Data
 public class UserVO implements Serializable {
-    private long id;
+    private Long id;
     private Long userId;
     private String userName;
     private String password;

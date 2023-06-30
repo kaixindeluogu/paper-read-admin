@@ -65,7 +65,7 @@ public class OrderApprovalController {
             @ApiImplicitParam(name = "queryType", value = "查询类型，当需要查询全部数据时，此参数值应该是all")
     })
     @GetMapping("/list")
-    public JsonResult listTagType(Integer page, String queryType) {
+    public JsonResult listOrderType(Integer page, String queryType) {
         log.debug("开始处理[查询订单信息列表]请求,页码:{}", page);
         if (page == null) {
             page = 1;
@@ -78,6 +78,17 @@ public class OrderApprovalController {
             pageData = service.list(pageNum);
         }
         return JsonResult.ok(pageData);
+    }
+
+    @ApiOperation("更新状态")
+    @PostMapping("/{id:[0-9]+}/pass")
+    public JsonResult passReport(
+            @PathVariable @Range
+                    (min = 1, message = "审批失败,请提交合法的id值!")
+                    Long id,Integer status) {
+        log.debug("开始处理【通过审批】的请求，参数：{}", id);
+        service.setApprovalStatus(id,status);
+        return JsonResult.ok();
     }
 }
 

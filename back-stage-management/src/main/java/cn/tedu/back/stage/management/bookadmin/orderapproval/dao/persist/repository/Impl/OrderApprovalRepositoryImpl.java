@@ -2,6 +2,7 @@ package cn.tedu.back.stage.management.bookadmin.orderapproval.dao.persist.reposi
 
 import cn.tedu.back.stage.management.bookadmin.orderapproval.dao.persist.mapper.OrderMapper;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.dao.persist.repository.IOrderApprovalRepository;
+import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.entity.OrderApproval;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalListItemVO;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalStandardVO;
 import cn.tedu.back.stage.management.common.pojo.vo.PageData;
@@ -11,7 +12,6 @@ import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -45,10 +45,16 @@ public class OrderApprovalRepositoryImpl implements IOrderApprovalRepository {
     public PageData<OrderApprovalListItemVO> list(Integer pageNum, Integer pageSize) {
         log.debug("开始处理[查询订单信息列表],页码:{},每页记录数据:{}",pageNum,pageSize);
         PageHelper.startPage(pageNum,pageSize);
+
         List<OrderApprovalListItemVO> list = mapper.list();
         PageInfo<OrderApprovalListItemVO> pageInfo = new PageInfo<>(list);
         PageData<OrderApprovalListItemVO> pageData = PageInfoToPageDataConverter.convert(pageInfo);
         return pageData;
     }
 
-}
+    @Override
+    public int updateById(OrderApproval approval) {
+            log.debug("开始执行[根据id修改举报数据],参数为:{}",approval);
+            return mapper.updateById(approval);
+        }
+    }

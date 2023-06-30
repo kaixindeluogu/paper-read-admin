@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  */
 @Data
 public class UserAddNewParam implements Serializable {
-    private long id;
+    private Long id;
     private Long userId;
     @NotNull(message = "新增用户失败，请提交用户名称！")
     @Pattern(regexp = "^[a-zA-Z\\u4e00-\\u9fa5]{2,10}$",

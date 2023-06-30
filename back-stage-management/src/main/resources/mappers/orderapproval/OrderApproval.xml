@@ -7,21 +7,26 @@
                zr.id,reservation_time,zr.status,zb.name,
                 zr.number,zr.user_id,
                zr.book_id,zr.gmt_create,zr.gmt_modified
-        FROM zhipian_reservation zr
-        JOIN zhipian_book zb
+        FROM zhipian_shop.zhipian_reservation zr
+        JOIN zhipian_shop.zhipian_book zb
             ON zb.id=zr.book_id
-        WHERE id = #{zr.id}
+        WHERE zr.id = #{id}
 
     </select>
     <select id="list" resultMap="ListResultMap">
         SELECT
-            id,reservation_time,status,
-            cancel_reason,return_time,number,user_id,
-            book_id,gmt_create,gmt_modified
+            zr.id,zr.reservation_time,zb.name,zr.status,
+               zu.user_name,
+            zr.return_time,zr.number,zr.user_id,
+            zr.book_id,zr.gmt_create,zr.gmt_modified
         FROM
-            zhipian_reservation
+            zhipian_shop.zhipian_reservation zr
+        JOIN zhipian_shop.zhipian_book zb
+                ON zb.id =zr.book_id
+        JOIN zhipian_shop.zhipian_user zu
+                ON zr.user_id = zu.id
         ORDER BY
-            id DESC
+            zr.id DESC
     </select>
 
     <resultMap id="StandardResultMap"
@@ -29,6 +34,7 @@
         <id column="id" property="id"/>
         <result column="reservation_time" property="reservationTime"/>
         <result column="status" property="status"/>
+        <result column="name" property="bookName"/>
         <result column="cancel_reason" property="cancelReason"/>
         <result column="return_time" property="returnTime"/>
         <result column="number" property="number"/>
@@ -40,17 +46,18 @@
     </resultMap>
 
     <resultMap id="ListResultMap"
-               type="cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalStandardVO">
+               type="cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalListItemVO">
         <id column="id" property="id"/>
         <result column="reservation_time" property="reservationTime"/>
+        <result column="user_name" property="userName"/>
         <result column="status" property="status"/>
+        <result column="name" property="bookName"/>
         <result column="cancel_reason" property="cancelReason"/>
         <result column="return_time" property="returnTime"/>
         <result column="number" property="number"/>
         <result column="user_id" property="userId"/>
         <result column="book_id" property="bookId"/>
-        <result column="gmt_create" property="gmtCreate"/>
-        <result column="gmt_modified" property="gmtModified"/>
+
 
     </resultMap>
 

@@ -11,7 +11,13 @@ import cn.tedu.back.stage.management.superadmin.account.pojo.vo.UserStandardVO;
  * DATE   = 2023/6/16  20:58
  */
 public interface IUserService {
+
+    /**
+     * 启用状态的显示文本
+     */
+    String[] ENABLE_TEXT = {"禁用" , "启用"};
     void addNum(UserAddNewParam addNewParam);
+
 
     /**
      * 根据id删除标签
@@ -41,4 +47,17 @@ public interface IUserService {
      * @param userUpdateInfoParam
      */
     void updateInfoById(UserUpdateInfoParam userUpdateInfoParam);
+    /**
+     * 启用标签
+     *
+     * @param id 标签ID
+     */
+    void setUserEnable(Long id);
+
+    /**
+     * 禁用标签
+     *
+     * @param id 标签ID
+     */
+    void setUserDisable(Long id);
 }

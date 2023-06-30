@@ -1,11 +1,20 @@
 package cn.tedu.back.stage.management.bookadmin.orderapproval.dao.persist.repository;
 
+import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.entity.OrderApproval;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalListItemVO;
 import cn.tedu.back.stage.management.bookadmin.orderapproval.pojo.vo.OrderApprovalStandardVO;
 import cn.tedu.back.stage.management.common.pojo.vo.PageData;
 
 
 public interface IOrderApprovalRepository {
+
+    /**
+     * 根据ID修改举报数据
+     *
+     * @param approval 封装了被修改数据的ID和新数据的对象
+     * @return 受影响的行数
+     */
+    int updateById(OrderApproval approval);
 
     /**
      * 根据ID删除举报信息数据

@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class User implements Serializable {
 
     @TableId(type =  IdType.AUTO)
-    private long id;
+    private Long id;
     private Long userId;
     private String userName;
     private String password;

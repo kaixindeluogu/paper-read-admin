@@ -26,7 +26,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements IUserService {
     @Value("${back.stage.management.dao.default-query-page-size}")
     private Integer defaultQueryPageSize;
-    @Autowired
+    @Autowired(required = false)
     private IUserRepository userRepository;
 
     @Override
