@@ -47,7 +47,7 @@ public class ReservationServiceImpl implements IReservationService {
         if(rows!=1){
             String message = "删除信息失败，服务器忙，请稍后再试！";
             log.warn(message);
-            throw new ServiceException(ServiceCode.ERROR_DELETE, message);
+         // throw new ServiceException(ServiceCode.ERROR_DELETE, message);
         }
     }
 
