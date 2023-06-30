@@ -8,6 +8,7 @@ import cn.tedu.back.stage.management.superadmin.banner.service.IBannerListServic
 import cn.tedu.back.stage.management.superadmin.banner.service.IBannerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -25,6 +26,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/admin/banner/")
 public class BannerController {
+
+
+
     @Autowired
     private IBannerService bannerService;
 
@@ -56,6 +60,8 @@ public class BannerController {
     @Autowired
     private IBannerListService bannerListService;
 
+    @Value("${filePath}")
+    private String filePath;
     @PostMapping("list")
     public JsonResult list() throws IOException {
         log.debug("开始处理查询banner请求");
@@ -69,7 +75,7 @@ public class BannerController {
              需要在返回给前端时手动添加.
             *
             * */
-            Path imagePath = Paths.get("e:/files/" + bannerVO.getImgUrl());
+            Path imagePath = Paths.get(filePath + bannerVO.getImgUrl());
             byte[] imageBytes = Files.readAllBytes(imagePath);
             // 将图片转换成 base64 编码
             String base64Img = Base64.getEncoder().encodeToString(imageBytes);
