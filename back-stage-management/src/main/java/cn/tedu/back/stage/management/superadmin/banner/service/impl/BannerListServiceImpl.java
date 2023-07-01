@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 
 /**
@@ -39,6 +40,10 @@ public class BannerListServiceImpl implements IBannerListService {
     public List<BannerVO> bannerListAll()  {
         log.info("开始处理bannerListAll查询业务");
         List<BannerVO> bannerVOS = bannerRepository.bannerListAll();
+        for (BannerVO bannerVO: bannerVOS) {
+            //url解码 否则:号报错
+            bannerVO.setImgUrl(URLDecoder.decode(bannerVO.getImgUrl()));
+        }
         return bannerVOS;
     }
 }

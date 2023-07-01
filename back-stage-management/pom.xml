@@ -17,6 +17,12 @@
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
+<!--        @ConfigurationProperties(prefix = "minio")  配合这个注解使用的-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!-- Spring Boot中的Spring MVC的依赖项，用于处理请求、响应结果、统一处理异常 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -69,6 +75,14 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.3.0</version>
         </dependency>
+
+        <!-- Minio -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>8.1.0</version>
+        </dependency>
+
         <!-- Spring Boot测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
