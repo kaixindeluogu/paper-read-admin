@@ -81,7 +81,7 @@ public class OrderApprovalController {
     }
 
     @ApiOperation("更新状态")
-    @PostMapping("/{id:[0-9]+}/pass")
+    @PostMapping("/{id:[0-9]+}/update")
     public JsonResult passReport(
             @PathVariable @Range
                     (min = 1, message = "审批失败,请提交合法的id值!")
