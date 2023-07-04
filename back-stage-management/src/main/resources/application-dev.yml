@@ -51,3 +51,9 @@ zhipian_shop:
     cn.tedu.back: trace
 
 filePath: e:/files
+
+# Minio配置
+minio:
+  endpoint: http://192.168.11.58:9000
+  accessKey: minioadmin
+  secretKey: minioadmin
