@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @TableName(value = "zhipian_book")
 public class Book {
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Long Id;
     private Long libraryId;
     private Long categoryId;
     private Long userId;
@@ -19,7 +19,7 @@ public class Book {
     private String publisher;
     private String status;
     private String cover;
-    private String storeAmount;
+    private Integer storeAmount;
     private Integer sort;
     private String introduction;
     private Integer borrowingVolume;

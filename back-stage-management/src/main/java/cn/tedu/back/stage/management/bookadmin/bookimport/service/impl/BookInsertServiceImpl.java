@@ -33,7 +33,19 @@ public class BookInsertServiceImpl implements IBookInsertService{
     @Override
     public int insert(BookTypeAddNewParam bookTypeAddNewParam) {
         log.debug("开始处理新增书籍业务, 参数:{} ", bookTypeAddNewParam);
-
+        if (bookTypeAddNewParam.getCover()==null || bookTypeAddNewParam.getCover().equals("")){
+            String message = "请选择图片";
+            throw new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY, message);
+        }else if (bookTypeAddNewParam.getName() == null || bookTypeAddNewParam.getName().equals("")){
+            String message = "请输入书名" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }else if (bookTypeAddNewParam.getIntroduction() == null || bookTypeAddNewParam.getIntroduction().equals("")){
+            String message = "详情介绍不能为空!" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }else if ( bookTypeAddNewParam.getStoreAmount() == null || bookTypeAddNewParam.getStoreAmount() < 1 ){
+            String message = "数量不能小于1!" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }
         Book book = new Book();
         BeanUtils.copyProperties(bookTypeAddNewParam, book);
         return bookListRepository.insert(book);

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class BookTypeAddNewParam {
-    private Long id;                                            // 唯一表示
+    private Long Id;                                            // 唯一表示
     private String name;                                        // '书名',
     private Long libraryId;                                     //  图书馆ID
     private Long userId;                                        //   用户ID
@@ -18,7 +18,7 @@ public class BookTypeAddNewParam {
     private String cover;                                       //'书籍封面',
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private LocalDateTime publishTime;                          //'出版日期',
-    private String storeAmount;                                 //'库存数量',
+    private Integer storeAmount;                                 //'库存数量',
     private String introduction;                                //'详细介绍',
 
 }
