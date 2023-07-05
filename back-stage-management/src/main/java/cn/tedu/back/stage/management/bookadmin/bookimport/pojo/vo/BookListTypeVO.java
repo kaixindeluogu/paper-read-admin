@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class BookListTypeVO {
-    private Long Id;                                            // 唯一表示
+    private Long id;                                            // 唯一表示
     private String name;                                        // '书名',
     private String author;                                      //  '作者',
     private String publisher;                                   //'出版社',

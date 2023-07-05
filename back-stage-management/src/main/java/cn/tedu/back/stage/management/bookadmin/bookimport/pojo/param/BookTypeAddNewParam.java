@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class BookTypeAddNewParam {
-    private Long Id;                                            // 唯一表示
+    private Long id;                                            // 唯一表示
     private String name;                                        // '书名',
     private Long libraryId;                                     //  图书馆ID
     private Long userId;                                        //   用户ID

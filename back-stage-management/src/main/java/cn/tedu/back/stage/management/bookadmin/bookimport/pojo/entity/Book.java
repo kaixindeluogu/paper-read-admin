@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @TableName(value = "zhipian_book")
 public class Book {
     @TableId(type = IdType.AUTO)
-    private Long Id;
+    private Long id;
     private Long libraryId;
     private Long categoryId;
     private Long userId;
