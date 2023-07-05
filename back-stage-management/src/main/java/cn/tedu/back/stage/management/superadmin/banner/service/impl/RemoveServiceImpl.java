@@ -1,5 +1,7 @@
 package cn.tedu.back.stage.management.superadmin.banner.service.impl;
 
+import cn.tedu.back.stage.management.common.ex.ServiceException;
+import cn.tedu.back.stage.management.common.web.JsonResult;
 import cn.tedu.back.stage.management.common.web.ServiceCode;
 import cn.tedu.back.stage.management.superadmin.banner.service.IRemoveService;
 import com.fasterxml.jackson.annotation.JacksonInject;
@@ -9,10 +11,16 @@ import io.minio.PutObjectArgs;
 import io.minio.errors.*;
 import io.minio.http.Method;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import sun.net.www.http.HttpClient;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +30,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+
 
 /**
  * Author = bianmy
@@ -34,13 +43,45 @@ public class RemoveServiceImpl implements IRemoveService {
     @Value("${filePath}")
     private String filePath;
 
+    @Value("${minio.endpoint}")
+    private String url;
+
 
     @Override
     public void remove(String url) {
-        // url =  /2023/06/1/xxxx.jpg
-        //完整路径   c:/files/2023/06/1/xxxx.jpg
-        //删除和路径对应的图片文件
-        new File(filePath + url).delete();
+        //从minio服务上删除
+        try {
+            //// 创建 HttpClient 实例
+            CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+            log.debug("接受删除图片业务请求路径为:{}", url);
+
+            //url截取去掉包括?部分地址
+            String[] parts = url.split("\\?");
+            log.debug(parts[0]);
+
+            // 创建 HttpDelete 请求
+            HttpDelete httpDelete = new HttpDelete(parts[0]);
+
+            // 执行请求并获取响应
+            HttpResponse response = httpClient.execute(httpDelete);
+
+            // 获取响应状态码
+            int responseCode = response.getStatusLine().getStatusCode();
+
+            // 判断响应状态码是否为 200 或 204
+            if (responseCode == 200 || responseCode == 204) {
+                log.debug("图片删除成功");
+
+            } else {
+                log.debug("图片删除失败");
+            }
+
+            httpClient.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     @Autowired
@@ -61,30 +102,18 @@ public class RemoveServiceImpl implements IRemoveService {
                             .contentType(file.getContentType())
                             .build()
             );
-            return minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
+            String url = minioClient.getPresignedObjectUrl(GetPresignedObjectUrlArgs.builder()
                     .bucket("files")
                     .object(fileName)
                     .method(method)
                     .build());
-        } catch (ErrorResponseException e) {
-            throw new RuntimeException(e);
-        } catch (InsufficientDataException e) {
-            throw new RuntimeException(e);
-        } catch (InternalException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidKeyException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidResponseException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (ServerException e) {
-            throw new RuntimeException(e);
-        } catch (XmlParserException e) {
-            throw new RuntimeException(e);
+            log.debug("服务器返回url地址{}", url);
+            return url;
+        } catch (ErrorResponseException | InsufficientDataException | InternalException | InvalidKeyException |
+                 InvalidResponseException | NoSuchAlgorithmException | XmlParserException | ServerException e) {
+            String message = "连接minio服务器异常,请联系管理员!";
+            throw new ServiceException(ServiceCode.ERROR_UNKNOWN, message);
         }
-
-
 
 
         //得到上传文件的名称

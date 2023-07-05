@@ -61,8 +61,7 @@ public class BannerController {
     @Autowired
     private IBannerListService bannerListService;
 
-    @Value("${filePath}")
-    private String filePath;
+
     @PostMapping("list")
     public JsonResult list() throws IOException {
         log.debug("开始处理查询banner请求");
