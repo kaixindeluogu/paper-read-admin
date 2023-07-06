@@ -34,6 +34,11 @@ public enum ServiceCode {
      */
     ERROR_UNAUTHORIZED(40100),
 
+    /**
+     * 文件上传失败
+     */
+    ERROR_UPLOAD_EMPTY(41000),
+
 /**
  * IO异常
  * */
