@@ -13,7 +13,7 @@
 
     <resultMap id="liberalBook"
                type="cn.tedu.back.stage.management.bookadmin.bookdetails.pojo.vo.LibraryBookVO">
-        <id column="id" property="Id"/>
+        <id column="id" property="id"/>
         <result column="library_id" property="libraryId"/>
         <result column="category_id" property="categoryId"/>
         <result column="name" property="name"/>
