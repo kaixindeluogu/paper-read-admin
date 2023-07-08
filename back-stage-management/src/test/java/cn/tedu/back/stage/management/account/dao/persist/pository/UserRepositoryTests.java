@@ -29,7 +29,7 @@ public class UserRepositoryTests {
         user.setUserName("朱八");
         user.setNickName("八");
         user.setPassword("737382");
-        user.setAdmin(0);
+        user.setAdmin("启用");
         user.setEMail("67825433@gmil.com");
         user.setGender("男");
         user.setIdNumber(00015L);

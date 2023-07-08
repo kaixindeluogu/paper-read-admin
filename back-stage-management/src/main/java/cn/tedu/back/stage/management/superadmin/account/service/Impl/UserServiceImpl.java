@@ -88,19 +88,20 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void setUserEnable(Long id) {
         log.debug("开始启用用户的权限,参数为{}", id);
-        updateEnableById(id, 1);
+        updateEnableById(id, "启用");
     }
 
     @Override
     public void setUserDisable(Long id) {
         log.debug("开始启用用户的权限,参数为{}", id);
-        updateEnableById(id, 0);
+        updateEnableById(id, "禁用");
     }
 
-    private void updateEnableById(Long id, Integer admin) {
+    private void updateEnableById(Long id, String admin) {
         UserStandardVO currentUser = userRepository.getStandardById(id);
         if (currentUser.getAdmin() == admin) {
-            String message = ENABLE_TEXT[admin] + "标签失败，标签已经处于此状态！";
+//            String message = ENABLE_TEXT["admin"] + "标签失败，标签已经处于此状态！";
+            String message =  "标签失败，标签已经处于"+admin+"状态！";
             log.warn(message);
             throw new ServiceException(ServiceCode.ERROR_CONFLICT, message);
         }
@@ -110,9 +111,10 @@ public class UserServiceImpl implements IUserService {
         user.setId(id);
         int rows = userRepository.updateById(user);
         if (rows != 1) {
-            String message = ENABLE_TEXT[admin] + "标签失败，服务器忙，请稍后再试！";
+//            String message = ENABLE_TEXT[admin] + "标签失败，服务器忙，请稍后再试！";
+            String message = admin + "标签失败，服务器忙，请稍后再试！";
             log.warn(message);
-            throw new ServiceException(ServiceCode.ERROR_UPDATE, message);
+            throw new ServiceException(ServiceCode.ERROR_UPDATE,message);
         }
     }
 
