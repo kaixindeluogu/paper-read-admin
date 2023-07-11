@@ -4,6 +4,7 @@ package cn.tedu.back.stage.management.bookadmin.bookimport.dao.repository.impl;
 import cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper.BookInsertMapper;
 import cn.tedu.back.stage.management.bookadmin.bookimport.dao.repository.IBookListRepository;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.entity.Book;
+import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.entity.PDFData;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.vo.BookListTypeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,18 @@ public class BookListRepositoryImpl implements IBookListRepository {
 
     @Override
     public int insert(Book book) {
-        log.debug("插入数据:" + book);
+        log.debug("插入书籍数据:{}", book);
         return bookInsertMapper.insert(book);
     }
 
+
+
+
+    /**
+     * 暂未用到
+     * @param id
+     * @return
+     */
     @Override
     public int deleteById(Long id) {
         return bookInsertMapper.deleteById(id);

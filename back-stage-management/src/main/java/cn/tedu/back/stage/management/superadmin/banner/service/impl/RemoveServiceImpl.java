@@ -40,11 +40,11 @@ import java.util.UUID;
 @Service
 @Slf4j
 public class RemoveServiceImpl implements IRemoveService {
-    @Value("${filePath}")
-    private String filePath;
+//    @Value("${filePath}")
+//    private String filePath;
 
-    @Value("${minio.endpoint}")
-    private String url;
+//    @Value("${minio.endpoint}")
+//    private String url;
 
 
     @Override
@@ -74,11 +74,15 @@ public class RemoveServiceImpl implements IRemoveService {
 
             } else {
                 log.debug("图片删除失败");
+                String message = "图片删除失败";
+                throw new ServiceException(ServiceCode.ERROR_UNKNOWN, message);
             }
 
             httpClient.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log.debug("文件删除异常,请重试");
+            String message = "文件删除异常,请重试";
+            throw new ServiceException(ServiceCode.ERROR_UNKNOWN, message);
         }
 
 

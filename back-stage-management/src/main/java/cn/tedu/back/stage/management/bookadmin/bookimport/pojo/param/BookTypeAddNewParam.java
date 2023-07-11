@@ -20,5 +20,9 @@ public class BookTypeAddNewParam {
     private LocalDateTime publishTime;                          //'出版日期',
     private Integer storeAmount;                                 //'库存数量',
     private String introduction;                                //'详细介绍',
+    /**
+     * PDF路径
+     */
+    private String pdfUrl;
 
 }

@@ -40,21 +40,21 @@ public class LibraryBookService implements ILibraryBookService {
         List<LibraryBookVO> libraryBookVOS = libraryBookRepository.listLibraryBook(id);
 
 
-        /**
-         在上述代码中，使用了 Java 8 中新增的 Base64 类来进行编码和解码。
-         其中，Base64.getEncoder().encodeToString(imageBytes)
-         方法用于将字节数组转换成 base64 编码的字符串。
-         需要注意的是，该方法返回的字符串不包含前缀 data:image/png;base64,，
-         需要在返回给前端时手动添加.
-         *
-         * */
-        for (LibraryBookVO libraryBookVO: libraryBookVOS){
-            Path imagePath = Paths.get("e:/files/" + libraryBookVO.getCover());
-            byte[] imageBytes = Files.readAllBytes(imagePath);
-            // 将图片转换成 base64 编码
-            String base64Img = Base64.getEncoder().encodeToString(imageBytes);
-            libraryBookVO.setCover("data:image/png;base64," + base64Img);
-        }
+//        /**
+//         在上述代码中，使用了 Java 8 中新增的 Base64 类来进行编码和解码。
+//         其中，Base64.getEncoder().encodeToString(imageBytes)
+//         方法用于将字节数组转换成 base64 编码的字符串。
+//         需要注意的是，该方法返回的字符串不包含前缀 data:image/png;base64,，
+//         需要在返回给前端时手动添加.
+//         *
+//         * */
+//        for (LibraryBookVO libraryBookVO: libraryBookVOS){
+//            Path imagePath = Paths.get("e:/files/" + libraryBookVO.getCover());
+//            byte[] imageBytes = Files.readAllBytes(imagePath);
+//            // 将图片转换成 base64 编码
+//            String base64Img = Base64.getEncoder().encodeToString(imageBytes);
+//            libraryBookVO.setCover("data:image/png;base64," + base64Img);
+//        }
         return libraryBookVOS;
     }
 

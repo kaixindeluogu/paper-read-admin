@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.back.stage.management.bookadmin.bookimport.dao.mapper.PDFInsertMapper">
+    <!--  修改PDF表book_id-->
+    <update id="updateByCover"
+            parameterType="cn.tedu.back.stage.management.bookadmin.bookimport.pojo.param.BookTypeAddNewParam">
+        UPDATE zhipian_shop.zhipian_data
+        SET book_id = (SELECT id FROM zhipian_shop.zhipian_book WHERE cover = #{cover})
+        WHERE pdf_url = #{pdfUrl}
+    </update>
+
+
+
+
+</mapper>
