@@ -62,6 +62,6 @@ filePath: e:/files
 
 # Minio配置
 minio:
-  endpoint: http://192.168.31.234:9000 #http://192.168.11.58:9000
+  endpoint: http://192.168.11.46:9000 #http://192.168.31.234:9000
   accessKey: minioadmin
   secretKey: minioadmin

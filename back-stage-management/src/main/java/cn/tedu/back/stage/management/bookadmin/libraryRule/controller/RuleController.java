@@ -37,7 +37,7 @@ public class RuleController {
 
     @PostMapping("/{id:[0-9]+}/update/info")
     public JsonResult updateInfoById(@Validated RuleUpdateInfoParam ruleUpdateInfoParam) {
-        log.debug("开始处理【修改标签】的请求，参数：{}", ruleUpdateInfoParam);
+        log.debug("开始处理【修改规则】的请求，参数：{}", ruleUpdateInfoParam);
         service.updateInfoById(ruleUpdateInfoParam);
         return JsonResult.ok();
     }
