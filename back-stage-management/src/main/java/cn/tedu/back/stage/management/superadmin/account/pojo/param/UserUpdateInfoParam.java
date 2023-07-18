@@ -17,7 +17,7 @@ public class UserUpdateInfoParam implements Serializable {
     private Long id;
     @NotNull(message = "新增用户失败，请提交用户名称！")
     @Pattern(regexp = "^[a-zA-Z\\u4e00-\\u9fa5]{2,10}$",
-            message = "标签类别必须是2~10长度的字符组成，且不允许使用标点符号")
+            message = "用户名称必须是2~10长度的字符组成，且不允许使用标点符号")
     @ApiModelProperty(value = "用户名称", required = true)
     private String userName;
 

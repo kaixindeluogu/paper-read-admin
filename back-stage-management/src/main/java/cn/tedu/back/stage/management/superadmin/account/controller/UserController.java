@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * Author = lee
  * DATE   = 2023/7/4  21:00
  */
-
+//9080
 @Validated
 @Slf4j
 @RestController
@@ -106,16 +106,16 @@ public class UserController {
     @ApiOperation("启用用户权限")
     @ApiOperationSupport(order = 310)
     @PostMapping("/{id:[0-9]+}/enable")
-    public JsonResult setEnable(@PathVariable @Range(min = 1,message = "禁用标签失败,请提交合法的ID值") Long id) {
-        log.debug("开始处理【启用标签】的请求，参数：{}", id);
+    public JsonResult setEnable(@PathVariable @Range(min = 1,message = "禁用权限失败,请提交合法的ID值") Long id) {
+        log.debug("开始处理【启用权限】的请求，参数：{}", id);
         userService.setUserEnable(id);
         return JsonResult.ok();
     }
     @ApiOperation("禁用用户权限")
     @ApiOperationSupport(order = 311)
     @PostMapping("/{id:[0-9]+}/disable")
-    public JsonResult setDisable(@PathVariable @Range(min = 1,message = "禁用标签失败,请提交合法的ID值") Long id){
-        log.debug("开始处理【禁用标签】的请求，参数：{}", id);
+    public JsonResult setDisable(@PathVariable @Range(min = 1,message = "禁用权限失败,请提交合法的ID值") Long id){
+        log.debug("开始处理【禁用权限】的请求，参数：{}", id);
         userService.setUserDisable(id);
         return JsonResult.ok();
     }
