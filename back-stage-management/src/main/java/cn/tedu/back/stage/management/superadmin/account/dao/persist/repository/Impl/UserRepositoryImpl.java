@@ -36,7 +36,7 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public int countByName(String userName) {
-        log.debug("根据名称【{}】统计【标签表】中的数据的数量", userName);
+        log.debug("根据名称【{}】统计【用户表】中的数据的数量", userName);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_name",userName);
         return userMapper.selectCount(queryWrapper);
@@ -44,23 +44,23 @@ public class UserRepositoryImpl implements IUserRepository {
 
     @Override
     public int deleteById(Long id) {
-        log.debug("开始执行[根据id删除标签数据],参数为{}", id);
+        log.debug("开始执行[根据id删除用户数据],参数为{}", id);
         return userMapper.deleteById(id);
     }
 
     @Override
     public UserStandardVO getStandardById(Long id) {
-        log.debug("开始执行[根据id查询标签],参数{}",id);
+        log.debug("开始执行[根据id查询用户],参数{}",id);
         return userMapper.getStandardById(id);
     }
     @Override
     public int updateById(User user) {
-        log.debug("开始执行【根据ID修改标签数据】，参数：{}", user);
+        log.debug("开始执行【根据ID修改用户数据】，参数：{}", user);
         return userMapper.updateById(user);
     }
     @Override//显示用户列表功能
     public PageData<UserListItemVO> list(Integer pageNum, Integer pageSize) {
-        log.debug("开始执行【显示标签列表功能】,页码：{}，每页记录数：{}", pageNum, pageSize);
+        log.debug("开始执行【显示用户列表功能】,页码：{}，每页记录数：{}", pageNum, pageSize);
         PageHelper.startPage(pageNum, pageSize);
         List<UserListItemVO> list = userMapper.list();
         PageInfo<UserListItemVO> pageInfo = new PageInfo<>(list);
@@ -73,7 +73,7 @@ public class UserRepositoryImpl implements IUserRepository {
     @Override
     public int countByNameAndNotId(Long id, String name) {
 
-        log.debug("开始执行【统计匹配名称查不匹配ID的标签数量】，ID：{}，名称：{}", id, name);
+        log.debug("开始执行【统计匹配名称查不匹配ID的用户数量】，ID：{}，名称：{}", id, name);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_name", name).ne("id", id);
         return userMapper.selectCount(queryWrapper);

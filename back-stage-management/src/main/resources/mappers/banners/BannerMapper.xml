@@ -5,7 +5,7 @@
 <mapper namespace="cn.tedu.back.stage.management.superadmin.banner.dao.mapper.BannerMapper">
     <select id="listBannerAll" resultMap="listALL">
         SELECT title,img_url,sort,gmt_create,id
-        FROM zhipian_banner
+        FROM zhipian_shop.zhipian_banner
     </select>
 
     <resultMap id="listALL" type="cn.tedu.back.stage.management.superadmin.banner.pojo.vo.BannerVO">
