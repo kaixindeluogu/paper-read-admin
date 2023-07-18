@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Author = bianmy
+ * Author = wsk
  * DATE = 2023/6/16 19:35
  */
 @Slf4j
@@ -31,6 +31,12 @@ public class BookListController {
         log.info("创建控制器对象: bookInsertService");
     }
 
+
+    /**
+     * 增加图书馆内书籍请求
+     * @param bookTypeAddNewParam
+     * @return
+     */
     @PostMapping("uploadType")
     public JsonResult upload(@RequestBody BookTypeAddNewParam bookTypeAddNewParam) {
         log.debug("开始处理新增书籍导入业务请求:{}", bookTypeAddNewParam);
@@ -38,6 +44,12 @@ public class BookListController {
         return JsonResult.ok();
     }
 
+
+    /**
+     * 暂时没有用到
+     * @param id
+     * @return
+     */
     @GetMapping("/{id}/deleteType")
     public JsonResult delete(@PathVariable Long id) {
         log.info("开始处理删除请求:{}",id);

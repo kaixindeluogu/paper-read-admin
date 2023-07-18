@@ -22,4 +22,6 @@ public class RuleAddNewParam implements Serializable {
     private String overdueFineRule;
     /**丢失或损坏规则*/
     private String lostDamageRule;
+    /**图书馆编号*/
+    private Long libraryId;
 }

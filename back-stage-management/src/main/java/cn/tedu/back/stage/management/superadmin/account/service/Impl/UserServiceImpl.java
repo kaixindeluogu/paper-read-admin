@@ -88,13 +88,19 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void setUserEnable(Long id) {
         log.debug("开始启用用户的权限,参数为{}", id);
-        updateEnableById(id, "启用");
+        updateEnableById(id, "user");
     }
 
     @Override
     public void setUserDisable(Long id) {
         log.debug("开始启用用户的权限,参数为{}", id);
-        updateEnableById(id, "禁用");
+        updateEnableById(id, "bookadmin");
+    }
+
+    @Override
+    public void setUserAdmin(Long id) {
+        log.debug("开始启用用户的权限,参数为{}", id);
+        updateEnableById(id, "admin");
     }
 
     private void updateEnableById(Long id, String admin) {

@@ -32,6 +32,7 @@ public interface IUserRepository {
      * @return
      */
     int deleteById(Long id);
+
     /**
      * 根据ID查询用户
      *

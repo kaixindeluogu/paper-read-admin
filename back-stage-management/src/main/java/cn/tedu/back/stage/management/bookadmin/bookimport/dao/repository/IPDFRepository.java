@@ -2,37 +2,25 @@ package cn.tedu.back.stage.management.bookadmin.bookimport.dao.repository;
 
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.entity.Book;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.entity.PDFData;
+import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.param.BookTypeAddNewParam;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.vo.BookListTypeVO;
 
-import java.util.List;
 
 /**
+ *
  * Author = bianmy
- * DATE = 2023/6/17 23:38
+ * DATE = 2023/7/10 23:38
  */
-public interface IBookListRepository {
-
+public interface IPDFRepository {
     /**
-     * 统计查询
-     * @return 统计查询
+     * 插入PDF数据
      */
-    BookListTypeVO ListTypeSelect(Long id);
+    void insert(PDFData data);
 
 
     /**
-     * 书籍导入
-     * @param book
-     * @return
+     * 根据上传的url路径获取到图书ID,修改PDF的BookID
      */
-    int insert(Book book);
 
-
-
-    /**
-     * 暂未用到
-     * @param id
-     * @return
-     */
-    int deleteById(Long id);
-
+    void updateByCover(BookTypeAddNewParam book);
 }

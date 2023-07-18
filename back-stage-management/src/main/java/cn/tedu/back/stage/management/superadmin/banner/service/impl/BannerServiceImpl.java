@@ -38,7 +38,6 @@ public class BannerServiceImpl implements IBannerService {
     public int deleteById(Long id) {
 
 
-
         return iBannerRepository.deleteById(id);
     }
 
