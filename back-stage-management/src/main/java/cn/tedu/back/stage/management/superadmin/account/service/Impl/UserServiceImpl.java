@@ -131,6 +131,8 @@ public class UserServiceImpl implements IUserService {
         log.debug("开始处理【根据ID查询标签】的业务，参数：{}", id);
 
         UserStandardVO currentUSer = userRepository.getStandardById(id);
+        System.out.println("55555555555555555555555555555555555555555555555555555555555555555");
+        System.out.println(currentUSer.getAdmin());
         if (currentUSer == null) {
             String message = "获取标签详情失败，尝试删除的标签数据不存在！";
             log.debug(message);
