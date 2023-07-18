@@ -48,7 +48,7 @@ back.stage.management:
   # 数据访问的相关配置
   dao:
     # 查询数据时，默认的每页记录数，建议值为10~30之间
-    default-query-page-size: 5
+    default-query-page-size: 30
 
 #自定义配置
 zhipian_shop:

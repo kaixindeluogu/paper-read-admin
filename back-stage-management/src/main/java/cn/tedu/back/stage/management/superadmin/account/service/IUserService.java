@@ -60,4 +60,10 @@ public interface IUserService {
      * @param id 用户ID
      */
     void setUserDisable(Long id);
+    /**
+     * 新增  启用管理员标签
+     *
+     * @param id 标签ID
+     */
+    void setUserAdmin(Long id);
 }
