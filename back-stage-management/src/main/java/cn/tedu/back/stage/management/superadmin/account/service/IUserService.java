@@ -48,16 +48,23 @@ public interface IUserService {
      */
     void updateInfoById(UserUpdateInfoParam userUpdateInfoParam);
     /**
-     * 启用标签
+     * 启用 用户 标签
      *
      * @param id 标签ID
      */
     void setUserEnable(Long id);
 
     /**
-     * 禁用标签
+     * 禁用  启用作者标签
      *
      * @param id 标签ID
      */
     void setUserDisable(Long id);
+
+    /**
+     * 新增  启用管理员标签
+     *
+     * @param id 标签ID
+     */
+    void setUserAdmin(Long id);
 }

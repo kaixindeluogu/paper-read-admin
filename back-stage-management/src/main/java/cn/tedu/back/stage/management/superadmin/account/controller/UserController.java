@@ -111,12 +111,21 @@ public class UserController {
         userService.setUserEnable(id);
         return JsonResult.ok();
     }
-    @ApiOperation("禁用用户权限")
+    @ApiOperation("启用作者权限")
     @ApiOperationSupport(order = 311)
     @PostMapping("/{id:[0-9]+}/disable")
     public JsonResult setDisable(@PathVariable @Range(min = 1,message = "禁用标签失败,请提交合法的ID值") Long id){
         log.debug("开始处理【禁用标签】的请求，参数：{}", id);
         userService.setUserDisable(id);
+        return JsonResult.ok();
+    }
+
+    @ApiOperation("启用管理员权限")
+    @ApiOperationSupport(order = 311)
+    @PostMapping("/{id:[0-9]+}/Admin")
+    public JsonResult setUserAdmin(@PathVariable @Range(min = 1,message = "禁用标签失败,请提交合法的ID值") Long id){
+        log.debug("开始处理【禁用标签】的请求，参数：{}", id);
+        userService.setUserAdmin(id);
         return JsonResult.ok();
     }
 
