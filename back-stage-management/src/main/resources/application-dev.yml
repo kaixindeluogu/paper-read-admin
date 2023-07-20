@@ -24,6 +24,14 @@ spring:
       # 最大激活数量
       max-active: 20
 
+  servlet:
+    # 上传配置
+    multipart:
+      # 最大文件尺寸
+      max-file-size: 500MB
+      # 最大请求尺寸
+      max-request-size: 500MB
+
 
   web:
     resources:
@@ -40,7 +48,7 @@ back.stage.management:
   # 数据访问的相关配置
   dao:
     # 查询数据时，默认的每页记录数，建议值为10~30之间
-    default-query-page-size: 5
+    default-query-page-size: 30
 
 #自定义配置
 zhipian_shop:
@@ -51,3 +59,9 @@ zhipian_shop:
     cn.tedu.back: trace
 
 filePath: e:/files
+
+# Minio配置
+minio:
+  endpoint: http://192.168.11.46:9000 #http://192.168.31.234:9000
+  accessKey: minioadmin
+  secretKey: minioadmin

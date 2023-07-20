@@ -26,17 +26,18 @@ public interface IUserRepository {
     int countByName(String name);
 
     /**
-     * 根据ID删除标签
+     * 根据ID删除用户
      *
      * @param id
      * @return
      */
     int deleteById(Long id);
+
     /**
-     * 根据ID查询标签
+     * 根据ID查询用户
      *
-     * @param id 标签ID
-     * @return 匹配的标签，如果没有匹配的数据，则返回null
+     * @param id 用户ID
+     * @return 匹配的用户，如果没有匹配的数据，则返回null
      */
     UserStandardVO getStandardById(Long id);
 
@@ -56,11 +57,11 @@ public interface IUserRepository {
      */
     int updateById(User user);
     /**
-     * 统计匹配名称查不匹配ID的标签数量，通常用于修改数据时判断名称是否被占用
+     * 统计匹配名称查不匹配ID的用户数量，通常用于修改数据时判断名称是否被占用
      *
-     * @param id   标签ID
-     * @param name 标签数量
-     * @return 匹配的标签的数量
+     * @param id   用户ID
+     * @param name 用户数量
+     * @return 匹配的用户的数量
      */
     int countByNameAndNotId(Long id, String name);
 }

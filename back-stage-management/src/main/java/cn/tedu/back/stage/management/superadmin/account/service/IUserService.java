@@ -20,16 +20,16 @@ public interface IUserService {
 
 
     /**
-     * 根据id删除标签
+     * 根据id删除用户
      * * @param id
      */
     void deleteById(Long id );
 
     /**
-     * 根据ID查询标签
+     * 根据ID查询用户
      *
-     * @param id 标签ID
-     * @return 匹配的标签，如果没有匹配的数据，则返回null
+     * @param id 用户ID
+     * @return 匹配的用户，如果没有匹配的数据，则返回null
      */
     UserStandardVO getStandardByID(Long id);
 
@@ -48,16 +48,22 @@ public interface IUserService {
      */
     void updateInfoById(UserUpdateInfoParam userUpdateInfoParam);
     /**
-     * 启用标签
+     * 启用用户权限
      *
-     * @param id 标签ID
+     * @param id 用户ID
      */
     void setUserEnable(Long id);
 
     /**
-     * 禁用标签
+     * 禁用用户权限
+     *
+     * @param id 用户ID
+     */
+    void setUserDisable(Long id);
+    /**
+     * 新增  启用管理员标签
      *
      * @param id 标签ID
      */
-    void setUserDisable(Long id);
+    void setUserAdmin(Long id);
 }

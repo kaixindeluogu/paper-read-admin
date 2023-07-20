@@ -1,7 +1,9 @@
 package cn.tedu.back.stage.management.bookadmin.bookimport.service.impl;
 
 import cn.tedu.back.stage.management.bookadmin.bookimport.dao.repository.IBookListRepository;
+import cn.tedu.back.stage.management.bookadmin.bookimport.dao.repository.IPDFRepository;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.entity.Book;
+import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.entity.PDFData;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.param.BookTypeAddNewParam;
 import cn.tedu.back.stage.management.bookadmin.bookimport.pojo.vo.BookListTypeVO;
 import cn.tedu.back.stage.management.bookadmin.bookimport.service.IBookInsertService;
@@ -23,6 +25,8 @@ public class BookInsertServiceImpl implements IBookInsertService{
 
     @Autowired
     private IBookListRepository bookListRepository;
+    @Autowired
+    private IPDFRepository pdfRepository;
 
 
     @Override
@@ -31,14 +35,39 @@ public class BookInsertServiceImpl implements IBookInsertService{
     }
 
     @Override
-    public int insert(BookTypeAddNewParam bookTypeAddNewParam) {
+    public void insert(BookTypeAddNewParam bookTypeAddNewParam) {
         log.debug("开始处理新增书籍业务, 参数:{} ", bookTypeAddNewParam);
+        if (bookTypeAddNewParam.getCover()==null || bookTypeAddNewParam.getCover().equals("")){
+            String message = "请选择图片";
+            throw new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY, message);
+        }else if (bookTypeAddNewParam.getName() == null || bookTypeAddNewParam.getName().equals("")){
+            String message = "请输入书名" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }else if (bookTypeAddNewParam.getIntroduction() == null || bookTypeAddNewParam.getIntroduction().equals("")){
+            String message = "详情介绍不能为空!" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }else if ( bookTypeAddNewParam.getStoreAmount() == null || bookTypeAddNewParam.getStoreAmount() < 1 ){
+            String message = "数量不能小于1!" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }else if (bookTypeAddNewParam.getPdfUrl() == null){
+            String message = "请上传PDF文件!" ;
+            throw  new ServiceException(ServiceCode.ERROR_UPLOAD_EMPTY ,message);
+        }
 
         Book book = new Book();
+        PDFData pdfData = new PDFData();
+        pdfData.setPdfUrl(bookTypeAddNewParam.getPdfUrl());
         BeanUtils.copyProperties(bookTypeAddNewParam, book);
-        return bookListRepository.insert(book);
+        pdfRepository.insert(pdfData);
+        bookListRepository.insert(book);
+        pdfRepository.updateByCover(bookTypeAddNewParam);
     }
 
+    /**
+     * 暂时没有用到
+     * @param id
+     * @return
+     */
     @Override
     public int deleteById(Long id) {
         log.debug("开始处理【删除书籍信息】业务 无参数");

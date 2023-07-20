@@ -19,7 +19,7 @@ public class Book {
     private String publisher;
     private String status;
     private String cover;
-    private String storeAmount;
+    private Integer storeAmount;
     private Integer sort;
     private String introduction;
     private Integer borrowingVolume;

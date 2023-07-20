@@ -17,7 +17,7 @@ public class BookListTypeVO {
     private String cover;                                       //'书籍封面',
     @JsonFormat(pattern = "yyy/MM/dd/ HH:mm:ss" , timezone = "GMT+8")
     private LocalDateTime publishTime;                          //'出版日期',
-    private String storeAmount;                                 //'库存数量',
+    private Integer storeAmount;                                 //'库存数量',
     private String introduction;                                //'详细介绍',
     @JsonFormat(pattern = "yyy/MM/dd/ HH:mm:ss" , timezone = "GMT+8")
     private LocalDateTime gmtCreate;                            //'数据创建时间',

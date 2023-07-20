@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public interface BookInsertMapper extends BaseMapper<Book> {
     /**
-     * 统计查询
+     * 统计查询,暂未用到
      * @return 统计查询
      */
      BookListTypeVO ListTypeSelect(Long id);

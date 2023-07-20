@@ -29,6 +29,16 @@ public enum ServiceCode {
      * 删除失败
      * */
     DELETE_ERROR(49999),
+    /**
+     * 错误：未认证
+     */
+    ERROR_UNAUTHORIZED(40100),
+
+    /**
+     * 文件上传失败
+     */
+    ERROR_UPLOAD_EMPTY(41000),
+
 /**
  * IO异常
  * */
@@ -46,6 +56,21 @@ public enum ServiceCode {
     ERROR_DELETE(50100),
 
     ERROR_UPDATE(50200),
+
+
+    /**
+     * 错误：JWT已过期
+     */
+    ERR_JWT_EXPIRED(60000),
+    /**
+     * 错误：JWT验证签名失败，可能使用了伪造的JWT
+     */
+    ERR_JWT_SIGNATURE(60100),
+    /**
+     * 错误：JWT格式错误
+     */
+    ERR_JWT_MALFORMED(60200),
+
     /**
      * 错误：其它异常
      */

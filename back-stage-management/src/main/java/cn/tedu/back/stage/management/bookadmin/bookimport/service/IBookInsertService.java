@@ -21,7 +21,8 @@ public interface IBookInsertService {
     BookListTypeVO ListTypeSelect(Long id);
 
 
-    int insert(BookTypeAddNewParam bookTypeAddNewParam);
+
+    void insert(BookTypeAddNewParam bookTypeAddNewParam);
 
     int deleteById(Long id);
 
