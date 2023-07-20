@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tedu.back.stage.management.bookadmin.category.dao.mapper.CategoryMapper">
+    <!-- int insertBatch(List<Category> categories); -->
+    <insert id="insertBatch" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO zhipian_shop.zhipian_category (
+        name, parent_id, depth, keywords, sort,
+        icon, is_parent
+        ) VALUES
+        <foreach collection="list" item="category" separator=",">
+            (#{category.name}, #{category.parentId}, #{category.depth}, #{category.keywords}, #{category.sort},
+            #{category.icon}, #{category.isParent})
+        </foreach>
+    </insert>
+
+    <!-- CategoryStandardVO getStandardById(Long id); -->
+    <select id="getStandardById" resultMap="StandardResultMap">
+        SELECT
+        <include refid="StandardQueryFields"/>
+        FROM
+        zhipian_shop.zhipian_category
+        WHERE
+        id=#{id}
+    </select>
+
+    <!-- List<CategoryListItemVO> list(); -->
+    <select id="list" resultMap="ListResultMap">
+        SELECT
+        <include refid="ListQueryFields"/>
+        FROM
+        zhipian_shop.zhipian_category
+        WHERE
+        parent_id=0
+        ORDER BY
+        sort DESC, id DESC
+    </select>
+
+    <!-- List<CategoryListByParentItemVO> listByParentId(); -->
+    <select id="listByParentId" resultMap="ListResultByParentMap">
+        SELECT
+            c.id,
+            c.parent_id,
+            p.name AS parentName,
+            c.name,
+            c.sort
+        FROM
+        zhipian_shop.zhipian_category c JOIN zhipian_shop.zhipian_category p ON c.parent_id=p.id
+        WHERE
+        c.parent_id!=0
+        ORDER BY
+        c.sort DESC, c.id DESC
+    </select>
+
+    <sql id="StandardQueryFields">
+        <if test="true">
+            id, name, parent_id, depth, keywords,
+            sort, icon, is_parent
+        </if>
+    </sql>
+
+    <resultMap id="StandardResultMap"
+               type="cn.tedu.back.stage.management.bookadmin.category.pojo.VO.CategoryStandardVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="depth" property="depth"/>
+        <result column="keywords" property="keywords"/>
+        <result column="sort" property="sort"/>
+        <result column="icon" property="icon"/>
+        <result column="is_parent" property="isParent"/>
+
+    </resultMap>
+
+    <sql id="ListQueryFields">
+        <if test="true">
+            id, name, parent_id, depth, keywords,
+            sort, icon, is_parent
+        </if>
+    </sql>
+
+    <resultMap id="ListResultMap"
+               type="cn.tedu.back.stage.management.bookadmin.category.pojo.VO.CategoryListItemVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="depth" property="depth"/>
+        <result column="keywords" property="keywords"/>
+        <result column="sort" property="sort"/>
+        <result column="icon" property="icon"/>
+        <result column="is_parent" property="isParent"/>
+    </resultMap>
+
+    <resultMap id="ListResultByParentMap"
+               type="cn.tedu.back.stage.management.bookadmin.category.pojo.VO.CategoryListByParentItemVO">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="sort" property="sort"/>
+        <result column="parentName" property="parentName"/>
+    </resultMap>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
